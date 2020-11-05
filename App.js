@@ -1,9 +1,14 @@
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ApiKeys from './constants/ApiKeys';
-import * as firebase from 'firebase';
 import Authentication from './components/Authentication';
+import Login from './components/Login';
+import Register from './components/Register';
+import HomeView from './components/HomeView';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,32 +19,41 @@ const styles = StyleSheet.create({
   },
 });
 
+const Stack = createStackNavigator();
+
 class App extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = {
-      firebase: 1,
-    };
 
-        
-    if (!firebase.apps.length){
-      firebase.initializeApp(ApiKeys.FirebaseConfig);
-
-    };
   }
 
   render(){
-    if (this.state.firebase){
-      return (
-        <Authentication/>
-      );
-    }
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Authentication"
+          component={Authentication}
+          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ title: 'Login' }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{ title: 'Register' }}
+        />
+        <Stack.Screen
+          name="HomeView"
+          component={HomeView}
+          options={{ title: 'Home' }}
+        />
+      </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 

@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import { withFirebase } from '../Firebase';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -12,48 +14,31 @@ const styles = StyleSheet.create({
   },
 });
 
-const initialState = {
-    username: '',
-    password: '',
-};
-
 class Authentication extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = initialState;
 
     }
 
+    onSignInButtonClick() {
+      // Open the Auth flow in a popup.
+      window.open('http://localhost:8888/login', 'firebaseAuth', 'height=315,width=400');
+    };
+
     render(){
-        const {username, password} = this.state;
         return (
             <View style={styles.container}>
-              <Text>Login</Text>
-              <Text>Username</Text>
-              <TextInput
-                placeholder = 'username'
-                onChangeText = {username}
-                defaultValue = {username}
-              />
-              <Text>Password</Text>
-              <TextInput
-                secureTextEntry = {true}
-                placeholder = 'password'
-                onChangeText = {password}
-                defaultValue = {password}
-              />
-
               <Button
-                onPress ={() => {}}
+                onPress ={() => {this.props.navigation.navigate('Login');}}
                 title="Login"
               />
                <Button
-                onPress ={() => {}}
+                onPress ={() => {this.props.navigation.navigate('Register')}}
                 title="Register"
               />
                <Button
-                onPress ={() => {}}
+                onPress ={() => {this.onSignInButtonClick();}}
                 title="Login with Spotify"
               />
 

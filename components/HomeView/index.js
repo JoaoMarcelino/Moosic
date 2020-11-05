@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ApiKeys from './constants/ApiKeys';
 import * as firebase from 'firebase';
 
 const styles = StyleSheet.create({
@@ -13,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class HomeView extends Component{
+class HomeView extends React.Component{
 
     constructor(props){
         super(props);
