@@ -21,7 +21,9 @@ class HomeView extends React.Component{
     render(){
         return (
             <View style={styles.container}>
-              <Text>Firebase bitch!</Text>
+              <Text>New Releases</Text>
+              <Text>Not Finished Yet</Text> 
+              <Text>Not Started</Text>
               <StatusBar style="auto" />
             </View>
         );

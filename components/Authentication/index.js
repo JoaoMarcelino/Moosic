@@ -1,7 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Linking} from 'react-native';
 import { withFirebase } from '../Firebase';
+import HomeView from '../HomeView';
+import {Platform} from 'react-native';
+
 
 
 const styles = StyleSheet.create({
@@ -23,7 +26,12 @@ class Authentication extends React.Component{
 
     onSignInButtonClick() {
       // Open the Auth flow in a popup.
-      window.open('http://localhost:8888/login', 'firebaseAuth', 'height=315,width=400');
+      if(Platform.OS == 'web'){
+        window.open('http://localhost:8888/login', 'firebaseAuth', 'height=315,width=400');
+      }else {
+        Linking.addEventListener('http://localhost:8888/login',this.props.navigation.navigate('HomeView'));
+      }
+  
     };
 
     render(){
@@ -32,13 +40,15 @@ class Authentication extends React.Component{
               <Button
                 onPress ={() => {this.props.navigation.navigate('Login');}}
                 title="Login"
+                
               />
                <Button
                 onPress ={() => {this.props.navigation.navigate('Register')}}
                 title="Register"
+
               />
                <Button
-                onPress ={() => {this.onSignInButtonClick();}}
+                onPress ={() => {this.onSignInButtonClick()}}
                 title="Login with Spotify"
               />
 

@@ -2,6 +2,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
+
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -30,30 +32,31 @@ class App extends React.Component{
 
   render(){
     return (
-      <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Authentication"
-          component={Authentication}
-          options={{ title: 'Welcome' }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ title: 'Login' }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{ title: 'Register' }}
-        />
-        <Stack.Screen
-          name="HomeView"
-          component={HomeView}
-          options={{ title: 'Home' }}
-        />
-      </Stack.Navigator>
-      </NavigationContainer>
+        <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Authentication"
+            component={Authentication}
+            options={{ title: 'Welcome' }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ title: 'Login' }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{ title: 'Register' }}
+          />
+          <Stack.Screen
+            name="HomeView"
+            component={HomeView}
+            options={{ title: 'Home' }}
+          />
+        </Stack.Navigator>
+        </NavigationContainer>
+      
     );
   }
 
