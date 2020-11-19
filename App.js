@@ -2,8 +2,6 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-
-
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -11,6 +9,10 @@ import Authentication from './components/Authentication';
 import Login from './components/Login';
 import Register from './components/Register';
 import HomeView from './components/HomeView';
+
+import { AppProvider } from './components/Firebase/app-context';
+import * as firebase from 'firebase';
+import ApiKeys from './constants/ApiKeys';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,11 +30,12 @@ class App extends React.Component{
   constructor(props){
     super(props);
 
+    if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
   }
 
   render(){
     return (
-        <NavigationContainer>
+      <AppProvider> <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
             name="Authentication"
@@ -56,6 +59,8 @@ class App extends React.Component{
           />
         </Stack.Navigator>
         </NavigationContainer>
+      </AppProvider>
+       
       
     );
   }

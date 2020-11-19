@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
-import { withFirebase } from '../Firebase';
-import { compose } from 'recompose';
-import Firebase from '../Firebase/firebase';
 import { CheckBox } from 'react-native-elements';
 
+import { AppConsumer } from './../Firebase/app-context';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,25 +30,42 @@ class Login extends React.Component{
 
     onSubmit = event => {
         const {username, password, terms} = this.state;
-        //this.props.firebase.doSignInWithEmailAndPassword(username, password);
-        this.props.navigation.navigate('HomeView')
+        this.context.doSignInWithEmailAndPassword(username, password).then(authUser => {
+          console.log("hey");
+          this.setState({ ...initialState });
+          this.props.navigation.navigate('HomeView')
+        })
+        .catch(error => {
+          this.setState({ error });
+          console.log(error);
+        });
+          
+      event.preventDefault();
     }
+
+    onChange = event => {
+      this.setState({ [event.target.name]: event.target.defaultValue });
+      console.log("EMAIL:",event.target);
+    };
+
 
     render(){
         const {username, password, terms} = this.state;
         console.log(this.props);
         return (
-            <View style={styles.container}>
+            <AppConsumer>
+           { (context) => (
+            <View style={styles.container} ref={(ref) => { this.context = context; }}>
                 <Text>Login</Text>
               <TextInput
                 placeholder = 'username'
-                onChangeText = {username}
+                onChange={this.onChange}
                 defaultValue = {username}
               />
               <TextInput
                 secureTextEntry = {true}
                 placeholder = 'password'
-                onChangeText = {password}
+                onChange={this.onChange}
                 defaultValue = {password}
               />
                 <CheckBox
@@ -64,8 +79,10 @@ class Login extends React.Component{
             />
 
             </View>
+           )}
+           </AppConsumer>
         );
     }
 }
 
-export default withFirebase(Login);
+export default Login;

@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import { withFirebase } from '../Firebase';
-import { compose } from 'recompose';
 
+
+import { AppConsumer } from './../Firebase/app-context';
 
 
 const styles = StyleSheet.create({
@@ -22,7 +22,7 @@ const initialState = {
     email:'',
     password: '',
     passwordcheck: '',
-    terms:0,
+    terms:false,
 };
 
 class Register extends React.Component{
@@ -33,47 +33,62 @@ class Register extends React.Component{
     }
 
     onSubmit = event => {
+        
         const {username, email, password, passwordcheck,terms} = this.state;
-        //this.props.firebase.doCreateUserWithEmailAndPassword(email, password);
-        this.props.navigation.navigate('HomeView')
+        console.log("EMAIL:",this.state,email, password);
+        const email1 = "admin@admin.com";
+        const password1 = "admin1";
+        this.context.doCreateUserWithEmailAndPassword(email1, password1).then(authUser => {
+            console.log("hey");
+            this.setState({ ...initialState });
+            this.props.navigation.navigate('HomeView')
+          })
+          .catch(error => {
+            this.setState({ error });
+            console.log(error);
+          });
+            
+        event.preventDefault();
     }
+
+    onChange = event => {
+        this.setState({ [event.target.name]: event.target.defaultValue });
+        console.log("EMAIL:",event.target);
+      };
 
     render(){
         const {username, email, password, passwordcheck,terms} = this.state;
-        console.log(this.props.firebase);
         return (
-            <View style={styles.container}>
+            <AppConsumer>
+            {(context) => (
+            <View style={styles.container} ref={(ref) => { this.context = context; }}>
                 <Text>Register</Text>
                 <TextInput
                     placeholder = 'username'
-                    onChangeText = {username}
-                    defaultValue = {username}
+                    onChange={this.onChange}
+                    value = {username}
+
                 />
                 <TextInput
                     placeholder = 'email'
-                    onChangeText = {email}
+                    onChange={this.onChange}
                     defaultValue = {email}
                 />
                 <TextInput
                     secureTextEntry = {true}
                     placeholder = 'password'
-                    onChangeText = {password}
+                    onChange={this.onChange}
                     defaultValue = {password}
                 />
                 <TextInput
                     secureTextEntry = {true}
                     placeholder = 'Confirm Password'
-                    onChangeText = {passwordcheck}
-                    defaultValue = {passwordcheck}
-                />
-                <TextInput
-                    secureTextEntry = {true}
-                    placeholder = ''
-                    onChangeText = {passwordcheck}
+                    onChange={this.onChange}
                     defaultValue = {passwordcheck}
                 />
                 <CheckBox
                     title='Click Here'
+                    onChange={this.onChange}
                     checked={terms}
                 />
 
@@ -81,10 +96,11 @@ class Register extends React.Component{
                 onPress ={this.onSubmit}
                 title="Register"
             />
-
             </View>
+            )}
+            </AppConsumer>
         );
     }
 }
 
-export default withFirebase(Register);
+export default Register;
