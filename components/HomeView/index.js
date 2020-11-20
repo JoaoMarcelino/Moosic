@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SectionList} from 'react-native';
 import * as firebase from 'firebase';
 
 const styles = StyleSheet.create({
@@ -12,18 +12,36 @@ const styles = StyleSheet.create({
   },
 });
 
+const initialState ={
+  newReleases: [],
+  notFinished:[],
+  notStarted:[],
+}
 class HomeView extends React.Component{
 
     constructor(props){
         super(props);
+        console.log(initialState.newReleases.length);
+        this.state = {...initialState};
     }
 
     render(){
+
+      this.newReleases =['Devin', 'Dan', 'Dominic','Devin', 'Dan', 'Dominic','Devin', 'Dan', 'Dominic'];
+      this.notFinished=['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie'];
+      this.notStarted=['Kevin', 'Kennedy','KKK','Kevin', 'Kennedy','KKK'];
         return (
             <View style={styles.container}>
-              <Text>New Releases</Text>
-              <Text>Not Finished Yet</Text> 
-              <Text>Not Started</Text>
+              <SectionList
+                sections={[
+                  {title: 'New Releases', data: this.newReleases.splice(0,5)},
+                  {title: 'Not Finished Yet', data: this.notFinished.splice(0,5)},
+                  {title:'Not Started', data: this.notStarted.splice(0,5)},
+                ]}
+                renderItem={({item}) => <Text >{item}</Text>}
+                renderSectionHeader={({section}) => <Text>{section.title}</Text>}
+                keyExtractor={(item, index) => index}
+              />
               <StatusBar style="auto" />
             </View>
         );
