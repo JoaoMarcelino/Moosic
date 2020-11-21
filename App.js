@@ -35,8 +35,9 @@ class App extends React.Component{
 
   render(){
     return (
-      <AppProvider> <NavigationContainer>
-        <Stack.Navigator>
+      <AppProvider> 
+        <NavigationContainer>
+        <Stack.Navigator> 
           <Stack.Screen
             name="Authentication"
             component={Authentication}

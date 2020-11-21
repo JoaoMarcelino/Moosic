@@ -30,6 +30,7 @@ class HomeView extends React.Component{
       this.newReleases =['Devin', 'Dan', 'Dominic','Devin', 'Dan', 'Dominic','Devin', 'Dan', 'Dominic'];
       this.notFinished=['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie'];
       this.notStarted=['Kevin', 'Kennedy','KKK','Kevin', 'Kennedy','KKK'];
+      
         return (
             <View style={styles.container}>
               <SectionList

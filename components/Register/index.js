@@ -36,9 +36,7 @@ class Register extends React.Component{
         
         const {username, email, password, passwordcheck,terms} = this.state;
         console.log("EMAIL:",this.state,email, password);
-        const email1 = "admin@admin.com";
-        const password1 = "admin1";
-        this.context.doCreateUserWithEmailAndPassword(email1, password1).then(authUser => {
+        this.context.doCreateUserWithEmailAndPassword(email, password).then(authUser => {
             console.log("hey");
             this.setState({ ...initialState });
             this.props.navigation.navigate('HomeView')
@@ -51,9 +49,9 @@ class Register extends React.Component{
         event.preventDefault();
     }
 
-    onChange = event => {
-        this.setState({ [event.target.name]: event.target.defaultValue });
-        console.log("EMAIL:",event.target);
+    onChange = (name, event) => {
+        this.setState({ [name]: event.target.value });
+        console.log([name],  event.target.value );
       };
 
     render(){
@@ -64,31 +62,36 @@ class Register extends React.Component{
             <View style={styles.container} ref={(ref) => { this.context = context; }}>
                 <Text>Register</Text>
                 <TextInput
+                    name='username'
                     placeholder = 'username'
-                    onChange={this.onChange}
-                    value = {username}
+                    onChange={this.onChange(name,defaultValue)}
+                    defaultValue = {username}
 
                 />
                 <TextInput
+                    name='email'
                     placeholder = 'email'
-                    onChange={this.onChange}
+                    onChange={this.onChange(name,defaultValue)}
                     defaultValue = {email}
                 />
                 <TextInput
+                    name='password'
                     secureTextEntry = {true}
                     placeholder = 'password'
-                    onChange={this.onChange}
+                    onChange={this.onChange(name,defaultValue)}
                     defaultValue = {password}
                 />
                 <TextInput
+                    name='passwordcheck'
                     secureTextEntry = {true}
                     placeholder = 'Confirm Password'
-                    onChange={this.onChange}
+                    onChange={this.onChange(name,defaultValue)}
                     defaultValue = {passwordcheck}
                 />
                 <CheckBox
+                    name='terms'
                     title='Click Here'
-                    onChange={this.onChange}
+                    onChange={this.onChange(name,defaultValue)}
                     checked={terms}
                 />
 

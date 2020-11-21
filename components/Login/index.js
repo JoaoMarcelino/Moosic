@@ -30,7 +30,9 @@ class Login extends React.Component{
 
     onSubmit = event => {
         const {username, password, terms} = this.state;
-        this.context.doSignInWithEmailAndPassword(username, password).then(authUser => {
+        const email1 = "admin@admin.com";
+        const password1 = "admin1";
+        this.context.doSignInWithEmailAndPassword(email1, password1).then(authUser => {
           console.log("hey");
           this.setState({ ...initialState });
           this.props.navigation.navigate('HomeView')
