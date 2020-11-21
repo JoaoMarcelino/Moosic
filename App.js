@@ -12,7 +12,7 @@ import HomeView from './components/HomeView';
 
 import { AppProvider } from './components/Firebase/app-context';
 import * as firebase from 'firebase';
-import ApiKeys from './constants/ApiKeys';
+import ApiKeys from './constants/apiKeys';
 
 const styles = StyleSheet.create({
   container: {

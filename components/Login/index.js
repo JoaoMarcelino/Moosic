@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 });
 
 const initialState = {
-    username: '',
+    email: '',
     password: '',
     terms: 0,
 };
@@ -29,9 +29,11 @@ class Login extends React.Component{
     }
 
     onSubmit = event => {
-        const {username, password, terms} = this.state;
+        const {email, password, terms} = this.state;
+
         const email1 = "admin@admin.com";
         const password1 = "admin1";
+
         this.context.doSignInWithEmailAndPassword(email1, password1).then(authUser => {
           console.log("hey");
           this.setState({ ...initialState });
@@ -47,27 +49,25 @@ class Login extends React.Component{
 
     onChange = event => {
       this.setState({ [event.target.name]: event.target.defaultValue });
-      console.log("EMAIL:",event.target);
     };
 
 
     render(){
-        const {username, password, terms} = this.state;
-        console.log(this.props);
+        const {email, password, terms} = this.state;
         return (
             <AppConsumer>
            { (context) => (
             <View style={styles.container} ref={(ref) => { this.context = context; }}>
                 <Text>Login</Text>
               <TextInput
-                placeholder = 'username'
-                onChange={this.onChange}
-                defaultValue = {username}
+                placeholder = 'email'
+                onChangeText={text => this.state.email = text}
+                defaultValue = {email}
               />
               <TextInput
                 secureTextEntry = {true}
                 placeholder = 'password'
-                onChange={this.onChange}
+                onChangeText={text => this.state.password = text}
                 defaultValue = {password}
               />
                 <CheckBox
