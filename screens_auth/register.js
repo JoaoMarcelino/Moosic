@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 
-import { AppConsumer } from './../Firebase/app-context';
+import { AppConsumer } from '../components/Firebase/app-context';
 
 
 const styles = StyleSheet.create({
