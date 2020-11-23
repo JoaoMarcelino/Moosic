@@ -2,11 +2,6 @@ import React from 'react';
 import * as firebase from 'firebase';
 
 
-
-const initialState = {
-  personData: { },
-};
-
 const AppContext = React.createContext();
 
 

@@ -1,70 +1,43 @@
-import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import Providers from "./navigation";
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
+import * as firebase from "firebase";
+import apiKeys from "./config/apiKeys";
 
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Authentication from './components/Authentication';
-import Login from './components/Login';
-import Register from './components/Register';
-import HomeView from './components/HomeView';
+let customFonts = {
+  "Courier Prime Regular": require("./assets/fonts/CourierPrime-Regular.ttf"),
+  "Courier Prime Bold": require("./assets/fonts/CourierPrime-Bold.ttf"),
+  "Inter Regular": require("./assets/fonts/Inter-Regular.ttf"),
+};
 
-import { AppProvider } from './components/Firebase/app-context';
-import * as firebase from 'firebase';
-import ApiKeys from './constants/apiKeys';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-const Stack = createStackNavigator();
-
-class App extends React.Component{
-
-  constructor(props){
+export default class App extends React.Component {
+  constructor(props) {
     super(props);
-
-    if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
+    if (!firebase.apps.length) {
+      firebase.initializeApp(apiKeys.FirebaseConfig);
+    }
   }
 
-  render(){
-    return (
-      <AppProvider> 
-        <NavigationContainer>
-        <Stack.Navigator> 
-          <Stack.Screen
-            name="Authentication"
-            component={Authentication}
-            options={{ title: 'Welcome' }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ title: 'Login' }}
-          />
-          <Stack.Screen
-            name="Register"
-            component={Register}
-            options={{ title: 'Register' }}
-          />
-          <Stack.Screen
-            name="HomeView"
-            component={HomeView}
-            options={{ title: 'Home' }}
-          />
-        </Stack.Navigator>
-        </NavigationContainer>
-      </AppProvider>
-       
-      
-    );
+  state = {
+    fontsLoaded: false,
+  };
+
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
   }
 
+  componentDidMount() {
+    this._loadFontsAsync();
+    
+  }
+
+  render() {
+    if (this.state.fontsLoaded) {
+      return <Providers />;
+    } else {
+      return <AppLoading />;
+    }
+  }
 }
-export default App;
