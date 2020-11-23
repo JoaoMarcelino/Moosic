@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
-import { CheckBox } from 'react-native-elements';
+//import { CheckBox } from 'react-native-elements';
 
 
 import { AppConsumer } from '../components/Firebase/app-context';
@@ -86,17 +86,10 @@ class Register extends React.Component{
                     onChangeText={text => this.state.passwordcheck = text}
                     defaultValue = {passwordcheck}
                 />
-                <CheckBox
-                    name='terms'
-                    title='Click Here'
-                    onChangeText={text => text ? false : true}
-                    checked={terms}
+                <Button
+                    onPress ={this.onSubmit}
+                    title="Register"
                 />
-
-            <Button
-                onPress ={this.onSubmit}
-                title="Register"
-            />
             </View>
             )}
             </AppConsumer>

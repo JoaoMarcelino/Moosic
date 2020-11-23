@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import OnboardingScreen from "../screens/OnboardingScreen";
-import LoginScreen from "../screens/LoginScreen";
-import SignupScreen from "../screens/SignupScreen";
-import StartScreen from "../screens/StartScreen";
+import LoginScreen from "../screens_auth/login";
+import SignupScreen from "../screens_auth/register";
+import AuthScreen from "../screens_auth/authentication";
 
 const Stack = createStackNavigator();
 
@@ -36,23 +35,18 @@ const AuthStack = () => {
     <Stack.Navigator> 
         <Stack.Screen
         name="Authentication"
-        component={Authentication}
+        component={AuthScreen}
         options={{ title: 'Welcome' }}
         />
         <Stack.Screen
         name="Login"
-        component={Login}
+        component={LoginScreen}
         options={{ title: 'Login' }}
         />
         <Stack.Screen
         name="Register"
-        component={Register}
+        component={SignupScreen}
         options={{ title: 'Register' }}
-        />
-        <Stack.Screen
-        name="HomeView"
-        component={HomeView}
-        options={{ title: 'Home' }}
         />
     </Stack.Navigator>
   );

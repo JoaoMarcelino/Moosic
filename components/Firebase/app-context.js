@@ -1,5 +1,6 @@
 import React from 'react';
 import * as firebase from 'firebase';
+import 'firebase/firestore';
 
 
 
