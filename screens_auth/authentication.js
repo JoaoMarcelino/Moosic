@@ -1,8 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Linking} from 'react-native';
-import { withFirebase } from '../Firebase';
-import HomeView from '../HomeView';
+import HomeView from '../screens_home/homeView';
 import {Platform} from 'react-native';
 
 
