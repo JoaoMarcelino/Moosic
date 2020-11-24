@@ -53,7 +53,7 @@ class Register extends React.Component{
         return (
             <AppConsumer>
             {(context) => (
-            <View style={styles.container} ref={(ref) => { this.context = context; }}>
+            <View style={styles.container} ref={(ref) => { this.context = context;}}>
                 <Text>Register</Text>
                 <TextInput
                     name='username'

@@ -39,7 +39,7 @@ class Login extends React.Component{
           this.setState({ ...initialState });
           //this.props.navigation.navigate('Home')
           this.context.authCheck;
-          console.log(this.context.authUser, this.context.authCheck)
+          //console.log(this.context.auth, null)
         })
         .catch(error => {
           this.setState({ error });

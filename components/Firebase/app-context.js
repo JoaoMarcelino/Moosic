@@ -34,16 +34,7 @@ export class AppProvider extends React.Component {
     doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
-    
-    authCheck = () => {
-        this.auth.onAuthStateChanged(function (user) {
-            if (user) {
-                this.setState({ user });
-            } else {
-                this.setState({ user: null });
-            }
-        })
-    }
+  
 
 
     doSignOut = () => this.auth.signOut();
@@ -53,10 +44,10 @@ export class AppProvider extends React.Component {
       return (
         <AppContext.Provider value={{
           personData: this.state.personData,
-          authCheck: this.authCheck,
-          authUser: this.state.user,
+          auth: this.auth,
           doCreateUserWithEmailAndPassword: this.doCreateUserWithEmailAndPassword,
           doSignInWithEmailAndPassword: this.doSignInWithEmailAndPassword,
+          doSignOut: this.doSignOut,
         }}>
           {this.props.children}
         </AppContext.Provider>
