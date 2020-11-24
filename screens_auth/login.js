@@ -37,7 +37,7 @@ class Login extends React.Component {
       .then((authUser) => {
         console.log("hey");
         this.setState({ ...initialState });
-        //this.props.navigation.navigate('Home')
+        //this.props.navigation.navigate('Home');
         this.context.authCheck;
         //console.log(this.context.auth, null)
       })

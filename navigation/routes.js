@@ -18,18 +18,17 @@ class Routes extends React.Component{
   }
 
   componentDidMount(){
-    var check =this.state;
+    var check = null;
     this.context.auth.onAuthStateChanged(function(user) {
         if (user) {
         //this.setState({ check });  
         check = user;
-        } else {
-        check = null;
+        }else {
+          check = null;
         }
-      
     })
     this.setState({check});
-    console.log(check);
+    console.log("inside",check);
   }
 
 
@@ -39,7 +38,7 @@ class Routes extends React.Component{
       <AppConsumer>
         { (context) => (
         <NavigationContainer ref={(ref) => { this.context = context; }} >
-            {console.log(this.state.check)}
+          {console.log("outside",this.state.check)}
           {this.state.check ? <AppBottomTab /> :  <AuthStack />}
         </NavigationContainer>
          )}
