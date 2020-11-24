@@ -37,7 +37,7 @@ class Register extends React.Component{
         const {username, email, password, passwordcheck,terms} = this.state;
         this.context.doCreateUserWithEmailAndPassword(email, password).then(authUser => {
             this.setState({ ...initialState });
-            this.props.navigation.navigate('HomeView')
+            //this.props.navigation.navigate('HomeView')
           })
           .catch(error => {
             this.setState({ error });
@@ -46,12 +46,8 @@ class Register extends React.Component{
             
         event.preventDefault();
     }
-    /*
-    onChange = (name, event) => {
-        this.setState({ [name]: event.target.value });
-        console.log([name],  event.target.value );
-      };
-      */
+
+    
     render(){
         const {username, email, password, passwordcheck,terms} = this.state;
         return (

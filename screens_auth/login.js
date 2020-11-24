@@ -37,7 +37,9 @@ class Login extends React.Component{
         this.context.doSignInWithEmailAndPassword(email1, password1).then(authUser => {
           console.log("hey");
           this.setState({ ...initialState });
-          this.props.navigation.navigate('HomeView')
+          //this.props.navigation.navigate('Home')
+          this.context.authCheck;
+          console.log(this.context.authUser, this.context.authCheck)
         })
         .catch(error => {
           this.setState({ error });
