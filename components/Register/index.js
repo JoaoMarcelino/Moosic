@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
-//import { CheckBox } from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 
 
-import { AppConsumer } from '../components/Firebase/app-context';
+import { AppConsumer } from './../Firebase/app-context';
 
 
 const styles = StyleSheet.create({
@@ -37,7 +37,7 @@ class Register extends React.Component{
         const {username, email, password, passwordcheck,terms} = this.state;
         this.context.doCreateUserWithEmailAndPassword(email, password).then(authUser => {
             this.setState({ ...initialState });
-            //this.props.navigation.navigate('HomeView')
+            this.props.navigation.navigate('HomeView')
           })
           .catch(error => {
             this.setState({ error });
@@ -46,14 +46,18 @@ class Register extends React.Component{
             
         event.preventDefault();
     }
-
-    
+    /*
+    onChange = (name, event) => {
+        this.setState({ [name]: event.target.value });
+        console.log([name],  event.target.value );
+      };
+      */
     render(){
         const {username, email, password, passwordcheck,terms} = this.state;
         return (
             <AppConsumer>
             {(context) => (
-            <View style={styles.container} ref={(ref) => { this.context = context;}}>
+            <View style={styles.container} ref={(ref) => { this.context = context; }}>
                 <Text>Register</Text>
                 <TextInput
                     name='username'
@@ -82,10 +86,17 @@ class Register extends React.Component{
                     onChangeText={text => this.state.passwordcheck = text}
                     defaultValue = {passwordcheck}
                 />
-                <Button
-                    onPress ={this.onSubmit}
-                    title="Register"
+                <CheckBox
+                    name='terms'
+                    title='Click Here'
+                    onChangeText={text => text ? false : true}
+                    checked={terms}
                 />
+
+            <Button
+                onPress ={this.onSubmit}
+                title="Register"
+            />
             </View>
             )}
             </AppConsumer>

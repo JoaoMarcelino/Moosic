@@ -21,6 +21,7 @@ class HomeView extends React.Component{
 
     constructor(props){
         super(props);
+        console.log(initialState.newReleases.length);
         this.state = {...initialState};
     }
 

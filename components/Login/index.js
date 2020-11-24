@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
-//import { CheckBox } from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 
-import { AppConsumer } from '../components/Firebase/app-context';
+import { AppConsumer } from './../Firebase/app-context';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,9 +37,7 @@ class Login extends React.Component{
         this.context.doSignInWithEmailAndPassword(email1, password1).then(authUser => {
           console.log("hey");
           this.setState({ ...initialState });
-          //this.props.navigation.navigate('Home')
-          this.context.authCheck;
-          //console.log(this.context.auth, null)
+          this.props.navigation.navigate('HomeView')
         })
         .catch(error => {
           this.setState({ error });
@@ -72,6 +70,11 @@ class Login extends React.Component{
                 onChangeText={text => this.state.password = text}
                 defaultValue = {password}
               />
+                <CheckBox
+                    title='Click Here'
+                    checked={terms}
+                />
+
             <Button
                 onPress ={this.onSubmit}
                 title="Login"
