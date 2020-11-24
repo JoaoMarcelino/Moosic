@@ -1,12 +1,10 @@
 import React from 'react';
 import * as firebase from 'firebase';
-import 'firebase/firestore';
 
 
 
 const initialState = {
-    user: null,
-    personData: { },
+  personData: { },
 };
 
 const AppContext = React.createContext();
@@ -34,9 +32,6 @@ export class AppProvider extends React.Component {
     doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
-  
-
-
     doSignOut = () => this.auth.signOut();
   
   
@@ -44,10 +39,8 @@ export class AppProvider extends React.Component {
       return (
         <AppContext.Provider value={{
           personData: this.state.personData,
-          auth: this.auth,
           doCreateUserWithEmailAndPassword: this.doCreateUserWithEmailAndPassword,
           doSignInWithEmailAndPassword: this.doSignInWithEmailAndPassword,
-          doSignOut: this.doSignOut,
         }}>
           {this.props.children}
         </AppContext.Provider>

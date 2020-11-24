@@ -5,7 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Routes from './navigation/routes';
+import Authentication from './components/Authentication';
+import Login from './components/Login';
+import Register from './components/Register';
+import HomeView from './components/HomeView';
 
 import { AppProvider } from './components/Firebase/app-context';
 import * as firebase from 'firebase';
@@ -33,8 +36,33 @@ class App extends React.Component{
   render(){
     return (
       <AppProvider> 
-          <Routes/>
+        <NavigationContainer>
+        <Stack.Navigator> 
+          <Stack.Screen
+            name="Authentication"
+            component={Authentication}
+            options={{ title: 'Welcome' }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ title: 'Login' }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{ title: 'Register' }}
+          />
+          <Stack.Screen
+            name="HomeView"
+            component={HomeView}
+            options={{ title: 'Home' }}
+          />
+        </Stack.Navigator>
+        </NavigationContainer>
       </AppProvider>
+       
+      
     );
   }
 
