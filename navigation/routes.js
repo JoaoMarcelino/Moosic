@@ -29,6 +29,7 @@ class Routes extends React.Component{
       
     })
     this.setState({check});
+    console.log(check);
   }
 
 
@@ -38,6 +39,7 @@ class Routes extends React.Component{
       <AppConsumer>
         { (context) => (
         <NavigationContainer ref={(ref) => { this.context = context; }} >
+            {console.log(this.state.check)}
           {this.state.check ? <AppBottomTab /> :  <AuthStack />}
         </NavigationContainer>
          )}
