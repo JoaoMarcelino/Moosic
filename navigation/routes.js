@@ -17,32 +17,26 @@ class Routes extends React.Component{
     this.state = {...initialState};
   }
 
-  componentDidMount(){
+  //DOESNT DO SHIT
+  checkAuth(){
     var check = null;
-    this.context.auth.onAuthStateChanged(function(user) {
-        if (user) {
-        //this.setState({ check });  
+    this.props.context.auth.onAuthStateChanged(function(user) {
+        if (user) { 
         check = user;
         }else {
           check = null;
         }
     })
-    this.setState({check});
     console.log("inside",check);
+    return check;
   }
-
-
   
   render(){
+      const check = this.checkAuth();
     return (
-      <AppConsumer>
-        { (context) => (
-        <NavigationContainer ref={(ref) => { this.context = context; }} >
-          {console.log("outside",this.state.check)}
-          {this.state.check ? <AppBottomTab /> :  <AuthStack />}
+        <NavigationContainer>
+          {check ? <AppBottomTab /> :  <AuthStack context={this.props.context}/>}
         </NavigationContainer>
-         )}
-      </AppConsumer>
     );
   }
 

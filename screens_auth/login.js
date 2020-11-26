@@ -3,7 +3,6 @@ import React from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 //import { CheckBox } from 'react-native-elements';
 
-import { AppConsumer } from "../components/Firebase/app-context";
 
 const styles = StyleSheet.create({
   container: {
@@ -24,6 +23,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...initialState };
+    this.context = this.props.route.params.context;
   }
 
   onSubmit = (event) => {
@@ -32,14 +32,12 @@ class Login extends React.Component {
     const email1 = "admin@admin.com";
     const password1 = "admin1";
 
-    this.context
+    this.props.route.params.context
       .doSignInWithEmailAndPassword(email1, password1)
       .then((authUser) => {
         console.log("hey");
         this.setState({ ...initialState });
-        //this.props.navigation.navigate('Home');
-        this.context.authCheck;
-        //console.log(this.context.auth, null)
+        this.props.navigation.navigate('AppBottomTab');
       })
       .catch((error) => {
         this.setState({ error });
@@ -56,14 +54,7 @@ class Login extends React.Component {
   render() {
     const { email, password, terms } = this.state;
     return (
-      <AppConsumer>
-        {(context) => (
-          <View
-            style={styles.container}
-            ref={(ref) => {
-              this.context = context;
-            }}
-          >
+          <View style={styles.container}>
             <Text>Login</Text>
             <TextInput
               placeholder="email"
@@ -78,8 +69,6 @@ class Login extends React.Component {
             />
             <Button onPress={this.onSubmit} title="Login" />
           </View>
-        )}
-      </AppConsumer>
     );
   }
 }

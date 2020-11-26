@@ -4,8 +4,6 @@ import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 //import { CheckBox } from 'react-native-elements';
 
 
-import { AppConsumer } from '../components/Firebase/app-context';
-
 
 const styles = StyleSheet.create({
   container: {
@@ -30,14 +28,16 @@ class Register extends React.Component{
     constructor(props){
         super(props);
         this.state = {...initialState};
+        this.context = this.props.route.params.context;
+        console.log("register",this.context);
     }
 
     onSubmit = event => {
         
         const {username, email, password, passwordcheck,terms} = this.state;
-        this.context.doCreateUserWithEmailAndPassword(email, password).then(authUser => {
+        this.props.route.params.context.doCreateUserWithEmailAndPassword(email, password).then(authUser => {
             this.setState({ ...initialState });
-            //this.props.navigation.navigate('HomeView')
+            //this.props.navigation.navigate('HomeView');
           })
           .catch(error => {
             this.setState({ error });
@@ -51,9 +51,7 @@ class Register extends React.Component{
     render(){
         const {username, email, password, passwordcheck,terms} = this.state;
         return (
-            <AppConsumer>
-            {(context) => (
-            <View style={styles.container} ref={(ref) => { this.context = context;}}>
+            <View style={styles.container}>
                 <Text>Register</Text>
                 <TextInput
                     name='username'
@@ -87,8 +85,6 @@ class Register extends React.Component{
                     title="Register"
                 />
             </View>
-            )}
-            </AppConsumer>
         );
     }
 }

@@ -8,6 +8,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Routes from './navigation/routes';
 
 import { AppProvider } from './components/Firebase/app-context';
+import { AppConsumer } from "./components/Firebase/app-context";
 import * as firebase from 'firebase';
 import ApiKeys from './constants/apiKeys';
 
@@ -32,8 +33,12 @@ class App extends React.Component{
 
   render(){
     return (
-      <AppProvider> 
-          <Routes/>
+      <AppProvider>
+        <AppConsumer>
+          { (context) => ( 
+            <Routes context={context}/>
+          )}
+        </AppConsumer>
       </AppProvider>
     );
   }
