@@ -7,40 +7,43 @@ import AuthScreen from "../screens_auth/authentication";
 
 import AppBottomTab from "./appBottomTab";
 
-<AppBottomTab />
-
-
+<AppBottomTab />;
 
 const Stack = createStackNavigator();
 
 const AuthStack = (context) => {
-  const Auth = <AuthScreen context={context}/>
-  return (
-    <Stack.Navigator initialRouteName={"Authentication"}>
-      <Stack.Screen
-        name="Authentication"
-        component={AuthScreen}
-        options={{ title: "Welcome" }}
-      />
-      <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{ title: "Login" }}
-        initialParams={context}
-      />
-      <Stack.Screen
-        name="Register"
-        component={SignupScreen}
-        options={{ title: "Register" }}
-        initialParams={context}
-      />
-      <Stack.Screen
-        name="AppBottomTab"
-        component={AppBottomTab}
-        options = {{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  );
+	const Auth = <AuthScreen context={context} />;
+	return (
+		<Stack.Navigator
+			screenOptions={{
+				headerShown: false,
+			}}
+			initialRouteName={"Authentication"}
+		>
+			<Stack.Screen
+				name="Authentication"
+				component={AuthScreen}
+				options={{ title: "Welcome" }}
+			/>
+			<Stack.Screen
+				name="Login"
+				component={LoginScreen}
+				options={{ title: "Login" }}
+				initialParams={context}
+			/>
+			<Stack.Screen
+				name="Register"
+				component={SignupScreen}
+				options={{ title: "Register" }}
+				initialParams={context}
+			/>
+			<Stack.Screen
+				name="AppBottomTab"
+				component={AppBottomTab}
+				options={{ headerShown: false }}
+			/>
+		</Stack.Navigator>
+	);
 };
 
 export default AuthStack;
