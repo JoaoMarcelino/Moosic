@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
 
 	buttons: {
 		flex: 1,
-		//flexWrap: "wrap",
 		alignContent: "center",
 		justifyContent: "space-evenly",
 	},
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		padding: 20,
+		padding: 36,
 	},
 
 	formButtons: {
