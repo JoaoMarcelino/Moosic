@@ -1,11 +1,10 @@
-import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { CheckBox } from "react-native-elements";
+import { SafeAreaView } from "react-native-safe-area-context";
 import FormButton from "../components/FormButton";
+import React from "react";
 
 import {
 	ImageBackground,
-	KeyboardAvoidingView,
 	StyleSheet,
 	Text,
 	TextInput,
@@ -165,6 +164,7 @@ const styles = StyleSheet.create({
 		width: 330,
 		justifyContent: "center",
 		alignItems: "center",
+		marginBottom: 20,
 	},
 
 	pageHeaderText: {
