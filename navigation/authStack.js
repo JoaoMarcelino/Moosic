@@ -41,6 +41,7 @@ const AuthStack = (context) => {
 				name="AppBottomTab"
 				component={AppBottomTab}
 				options={{ headerShown: false }}
+				initialParams={context}
 			/>
 		</Stack.Navigator>
 	);

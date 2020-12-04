@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, SectionList } from "react-native";
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

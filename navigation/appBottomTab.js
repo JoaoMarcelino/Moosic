@@ -7,11 +7,11 @@ import Profile from "../screens_home/profile";
 
 const Tab = createMaterialBottomTabNavigator();
 
-const AppBottomTab = () => {
+const AppBottomTab = (context) => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={HomeView} />
-      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Search" component={Search} initialParams={context.route.params}/>
       <Tab.Screen name="Vault" component={Vault} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
