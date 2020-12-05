@@ -39,12 +39,18 @@ export class AppProvider extends React.Component {
     // *** User API ***
 
 
-  musics = () => this.db.collection(uid).collection("musics").get();
+  musics = () => {
+    const uid = this.auth.currentUser.uid;
+    return this.db
+      .collection('User')
+      .doc(uid)
+      .collection("Music")
+      .get();
+  };
       
 
   addMusic = (itemObj) => {
     const uid = this.auth.currentUser.uid;
-    console.log("here",uid);
     this.db
       .collection('User')
       .doc(uid)
@@ -54,10 +60,11 @@ export class AppProvider extends React.Component {
   };
 
   removeMusic = (itemObj) => {
-    
+    const uid = this.auth.currentUser.uid;
     console.log(itemObj);
     this.db
-    .collection({uid})
+      .collection('User')
+      .doc(uid)
       .collection("Music").doc(itemObj.id).delete().then(function() {
         console.log("Document successfully deleted!");
         window.location.reload(false);
@@ -77,6 +84,7 @@ export class AppProvider extends React.Component {
           doSignInWithEmailAndPassword: this.doSignInWithEmailAndPassword,
           doSignOut: this.doSignOut,
 
+          musics: this.musics,
           addMusic: this.addMusic,
           removeMusic: this.removeMusic,
         }}>
