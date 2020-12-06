@@ -57,63 +57,6 @@ class AddMusic extends React.Component {
 	render() {
 		const { title, artist, album, year, musicList } = this.state;
 		return (
-			/*
-      <View sytle={styles.containerNotRetarded}>
-        <ImageBackground
-          source={require("../assets/400x800.png")}
-          style={styles.backgroundImage}
-        >
-          <View style={styles.containerNotRetarded}>
-            <View style={styles.pageHeader}>
-              <Text style={styles.pageHeaderText}>Add Music</Text>
-            </View>
-
-            <View style={styles.form}>
-              <TextInput
-                style={styles.inputForm}
-                name="Title"
-                placeholder="Title"
-                placeholderStyle={styles.inputFormText}
-                placeholderTextColor="#0D0D0D"
-                onChangeText={(text) => (this.state.title = text)}
-                defaultValue={title}
-              />
-
-              <TextInput
-                style={styles.inputForm}
-                name="Artist"
-                placeholder="Artist"
-                placeholderTextColor="#0D0D0D"
-                onChangeText={(text) => (this.state.artist = text)}
-                defaultValue={artist}
-              />
-
-              <TextInput
-                style={styles.inputForm}
-                name="Album"
-                placeholder="Album"
-                placeholderStyle={styles.inputFormText}
-                placeholderTextColor="#0D0D0D"
-                onChangeText={(text) => (this.state.album = text)}
-                defaultValue={album}
-              />
-
-              <TextInput
-                name="Year"
-                style={styles.inputForm}
-                placeholder="Year"
-                placeholderTextColor="#0D0D0D"
-                onChangeText={(text) => (this.state.year = text)}
-                defaultValue={year}
-              />
-
-              <FormButton onPress={this.addMusic} buttonTitle="Add" />
-            </View>
-          </View>
-        </ImageBackground>
-      </View>
-      */
-
 			<SafeAreaView style={styles.safeView}>
 				<ImageBackground
 					source={require("../assets/400x800.png")}
