@@ -10,7 +10,12 @@ const Tab = createMaterialBottomTabNavigator();
 
 const AppBottomTab = (context) => {
 	return (
-		<Tab.Navigator barStyle={{ backgroundColor: "#0D0D0D", height: 50 }}>
+		<Tab.Navigator
+			activeColor="#55D9C1"
+			inactiveColor="#989898"
+			shifting={false}
+			barStyle={{ backgroundColor: "#0D0D0D", height: 50 }}
+		>
 			<Tab.Screen name="Home" component={HomeView} />
 			<Tab.Screen
 				name="Search"
