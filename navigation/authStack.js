@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, View } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { Animated } from "react-native";
 
 import LoginScreen from "../screens_auth/login";
 import SignupScreen from "../screens_auth/register";
@@ -17,30 +19,51 @@ const AuthStack = (context) => {
 		<Stack.Navigator
 			screenOptions={{
 				headerShown: false,
+				cardStyleInterpolator: forFade,
 			}}
 			initialRouteName={"Authentication"}
 		>
 			<Stack.Screen
 				name="Authentication"
 				component={AuthScreen}
-				options={{ title: "Welcome" }}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
 			/>
 			<Stack.Screen
 				name="Login"
 				component={LoginScreen}
-				options={{ title: "Login" }}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
 				initialParams={context}
 			/>
 			<Stack.Screen
 				name="Register"
 				component={SignupScreen}
-				options={{ title: "Register" }}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
 				initialParams={context}
 			/>
 			<Stack.Screen
 				name="AppBottomTab"
 				component={AppBottomTab}
-				options={{ headerShown: false }}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
 				initialParams={context}
 			/>
 		</Stack.Navigator>
@@ -48,3 +71,9 @@ const AuthStack = (context) => {
 };
 
 export default AuthStack;
+
+const forFade = ({ current }) => ({
+	cardStyle: {
+		opacity: current.progress,
+	},
+});

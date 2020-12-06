@@ -7,6 +7,7 @@ import {
 	Image,
 	ImageBackground,
 	Linking,
+	StatusBar,
 	StyleSheet,
 	Text,
 	View,
@@ -37,6 +38,7 @@ class Authentication extends React.Component {
 	render() {
 		return (
 			<SafeAreaView style={styles.safeView}>
+				<StatusBar backgroundColor="black" barStyle="light-content" />
 				<ImageBackground
 					source={require("../assets/400x800.png")}
 					style={styles.backgroundImage}

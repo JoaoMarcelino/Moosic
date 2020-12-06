@@ -1,11 +1,12 @@
 import React from "react";
 import {
-	Text,
-	View,
-	StyleSheet,
 	FlatList,
 	ImageBackground,
+	StatusBar,
+	StyleSheet,
+	Text,
 	TextInput,
+	View,
 } from "react-native";
 import FormButton from "../components/FormButton";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -58,6 +59,7 @@ class AddMusic extends React.Component {
 		const { title, artist, album, year, musicList } = this.state;
 		return (
 			<SafeAreaView style={styles.safeView}>
+				<StatusBar backgroundColor="black" barStyle="light-content" />
 				<ImageBackground
 					source={require("../assets/400x800.png")}
 					style={styles.backgroundImage}

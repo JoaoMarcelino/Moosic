@@ -9,23 +9,23 @@ import AddMusic from "../screens_home/addMusic";
 const Tab = createMaterialBottomTabNavigator();
 
 const AppBottomTab = (context) => {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeView} />
-      <Tab.Screen
-        name="Search"
-        component={Search}
-        initialParams={context.route.params}
-      />
-      <Tab.Screen name="Vault" component={Vault} />
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen
-        name="Add Music"
-        component={AddMusic}
-        initialParams={context.route.params}
-      />
-    </Tab.Navigator>
-  );
+	return (
+		<Tab.Navigator barStyle={{ backgroundColor: "#0D0D0D", height: 50 }}>
+			<Tab.Screen name="Home" component={HomeView} />
+			<Tab.Screen
+				name="Search"
+				component={Search}
+				initialParams={context.route.params}
+			/>
+			<Tab.Screen name="Vault" component={Vault} />
+			<Tab.Screen name="Profile" component={Profile} />
+			<Tab.Screen
+				name="Add Music"
+				component={AddMusic}
+				initialParams={context.route.params}
+			/>
+		</Tab.Navigator>
+	);
 };
 
 export default AppBottomTab;
