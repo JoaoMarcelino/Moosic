@@ -24,8 +24,9 @@
 			},
 			"softwareKeyboardLayoutMode": "pan"
 		},
-		"web": {
-			"favicon": "./assets/favicon.png"
+		"androidNavigationBar": {
+			"barStyle": "light-content",
+			"backgroundColor": "#0D0D0D"
 		}
 	}
 }
