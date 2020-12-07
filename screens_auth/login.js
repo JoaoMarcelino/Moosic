@@ -4,6 +4,7 @@ import FormButton from "../components/FormButton";
 import React from "react";
 
 import {
+	Image,
 	ImageBackground,
 	StatusBar,
 	StyleSheet,
@@ -61,7 +62,12 @@ class Login extends React.Component {
 				>
 					<View style={styles.container}>
 						<View style={styles.pageHeader}>
+							<Image
+								source={require("../assets/Crossmark.png")}
+								style={styles.crossmark}
+							/>
 							<Text style={styles.pageHeaderText}>Log In</Text>
+							<View />
 						</View>
 						<View style={styles.form}>
 							<TextInput
@@ -137,6 +143,11 @@ const styles = StyleSheet.create({
 		color: "#0D0D0D",
 	},
 
+	crossmark: {
+		flex: 1,
+		resizeMode: "contain",
+	},
+
 	form: {
 		flex: 1,
 		alignItems: "center",
@@ -157,6 +168,7 @@ const styles = StyleSheet.create({
 	},
 
 	pageHeader: {
+		flexDirection: "row",
 		backgroundColor: "#F2F2F2",
 		borderRadius: 40,
 		borderColor: "#0D0D0D",
@@ -164,12 +176,13 @@ const styles = StyleSheet.create({
 		borderWidth: 3,
 		height: 57,
 		width: 330,
-		justifyContent: "center",
+		justifyContent: "space-evenly",
 		alignItems: "center",
 		marginBottom: 20,
 	},
 
 	pageHeaderText: {
+		flex: 2,
 		fontFamily: "Courier Prime Bold",
 		fontStyle: "normal",
 		fontWeight: "bold",
