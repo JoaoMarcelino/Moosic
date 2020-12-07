@@ -5,6 +5,7 @@ import Search from "../screens_home/search";
 import Vault from "../screens_home/vault";
 import Profile from "../screens_home/profile";
 import AddMusic from "../screens_home/addMusic";
+import AddAlbum from "../screens_home/addAlbum";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -26,7 +27,7 @@ const AppBottomTab = (context) => {
 			<Tab.Screen name="Profile" component={Profile} />
 			<Tab.Screen
 				name="Add Music"
-				component={AddMusic}
+				component={AddAlbum}
 				initialParams={context.route.params}
 			/>
 		</Tab.Navigator>

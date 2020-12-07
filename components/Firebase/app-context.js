@@ -39,6 +39,40 @@ export class AppProvider extends React.Component {
     // *** User API ***
 
 
+  albums = () => {
+    const uid = this.auth.currentUser.uid;
+    return this.db
+      .collection('User')
+      .doc(uid)
+      .collection("Album")
+      .get();
+  };
+      
+  addAlbum = (itemObj) => {
+    const uid = this.auth.currentUser.uid;
+    this.db
+      .collection('User')
+      .doc(uid)
+      .collection("Album")
+      .add(itemObj)
+      .catch((err) => alert(err));
+  };
+
+  
+  removeAlbum = (itemObj) => {
+    const uid = this.auth.currentUser.uid;
+    console.log(itemObj);
+    this.db
+      .collection('User')
+      .doc(uid)
+      .collection("Album").doc(itemObj.id).delete().then(function() {
+        console.log("Document successfully deleted!");
+        window.location.reload(false);
+      }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+  }
+
   musics = () => {
     const uid = this.auth.currentUser.uid;
     return this.db
@@ -71,8 +105,6 @@ export class AppProvider extends React.Component {
       }).catch(function(error) {
         console.error("Error removing document: ", error);
     });
-    
-
   }
 
     render() {
@@ -87,6 +119,10 @@ export class AppProvider extends React.Component {
           musics: this.musics,
           addMusic: this.addMusic,
           removeMusic: this.removeMusic,
+
+          albums: this.albums,
+          addAlbum: this.addAlbum,
+          removeAlbum: this.removeAlbum,
         }}>
           {this.props.children}
         </AppContext.Provider>
