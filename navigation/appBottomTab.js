@@ -16,7 +16,7 @@ const AppBottomTab = (context) => {
       activeColor="#55D9C1"
       inactiveColor="#989898"
       shifting={false}
-      barStyle={{ backgroundColor: "#0D0D0D", height: 50 }}
+      barStyle={{ backgroundColor: "#151515", height: 50 }}
     >
       <Tab.Screen name="Home" component={HomeView} />
       <Tab.Screen
@@ -24,17 +24,8 @@ const AppBottomTab = (context) => {
         component={Search}
         initialParams={context.route.params}
       />
-      <Tab.Screen
-        name="Vault"
-        component={VaultStack}
-        initialParams={context.route.params}
-      />
+      <Tab.Screen name="Vault" component={Vault} />
       <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen
-        name="Add Music"
-        component={AddAlbum}
-        initialParams={context.route.params}
-      />
     </Tab.Navigator>
   );
 };
