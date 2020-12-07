@@ -6,40 +6,37 @@ import AuthStack from "./authStack";
 import AppBottomTab from "./appBottomTab";
 
 const initialState = {
-  check:null,
+  check: null,
+};
 
-}
-
-
-class Routes extends React.Component{
-  constructor(props){
+class Routes extends React.Component {
+  constructor(props) {
     super(props);
-    this.state = {...initialState};
+    this.state = { ...initialState };
   }
 
   //DOESNT DO SHIT
-  checkAuth(){
+  checkAuth() {
     var check = null;
-    this.props.context.auth.onAuthStateChanged(function(user) {
-        if (user) { 
+    this.props.context.auth.onAuthStateChanged(function (user) {
+      if (user) {
         check = user;
-        }else {
-          check = null;
-        }
-    })
-    console.log("inside",check);
+      } else {
+        check = null;
+      }
+    });
+    console.log("inside", check);
     return check;
   }
-  
-  render(){
-      const check = this.checkAuth();
+
+  render() {
+    const check = this.checkAuth();
     return (
-        <NavigationContainer>
-          {check ? <AppBottomTab /> :  <AuthStack context={this.props.context}/>}
-        </NavigationContainer>
+      <NavigationContainer>
+        {check ? <AppBottomTab /> : <AuthStack context={this.props.context} />}
+      </NavigationContainer>
     );
   }
-
 }
 
 export default Routes;
