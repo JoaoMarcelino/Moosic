@@ -23,15 +23,33 @@ class Vault extends React.Component {
             <View style={styles.formButtons}>
               <FormButton
                 onPress={() => {
-                  this.props.navigation.navigate("Add Music");
+                  this.props.navigation.navigate("AddMusic");
                 }}
                 buttonTitle="Add Music"
               />
               <FormButton
                 onPress={() => {
-                  this.props.navigation.navigate("Add Album");
+                  this.props.navigation.navigate("AddAlbum");
                 }}
                 buttonTitle="Add Album"
+              />
+              <FormButton
+                onPress={() => {
+                  this.props.navigation.navigate("MyMusic");
+                }}
+                buttonTitle="My Music"
+              />
+              <FormButton
+                onPress={() => {
+                  this.props.navigation.navigate("MyAlbums");
+                }}
+                buttonTitle="My Albums"
+              />
+              <FormButton
+                onPress={() => {
+                  this.props.navigation.navigate("MyCollection");
+                }}
+                buttonTitle="My Collection"
               />
             </View>
           </View>

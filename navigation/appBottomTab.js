@@ -24,7 +24,11 @@ const AppBottomTab = (context) => {
         component={Search}
         initialParams={context.route.params}
       />
-      <Tab.Screen name="Vault" component={Vault} />
+      <Tab.Screen
+        name="Vault"
+        component={VaultStack}
+        initialParams={context.route.params}
+      />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

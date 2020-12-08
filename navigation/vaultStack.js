@@ -6,7 +6,9 @@ import { Animated } from "react-native";
 import AddAlbum from "../screens_home/addAlbum";
 import AddMusic from "../screens_home/addMusic";
 import Vault from "../screens_home/vault";
-
+import MyAlbums from "../screens_home/myAlbums";
+import MyMusic from "../screens_home/myMusic";
+import MyCollection from "../screens_home/myCollection";
 const Stack = createStackNavigator();
 
 const VaultStack = (context) => {
@@ -32,7 +34,7 @@ const VaultStack = (context) => {
         initialParams={context.route.params}
       />
       <Stack.Screen
-        name="Add Music"
+        name="AddMusic"
         component={AddMusic}
         options={{
           title: "Add Music",
@@ -43,8 +45,41 @@ const VaultStack = (context) => {
         initialParams={context.route.params}
       />
       <Stack.Screen
-        name="Add Album"
+        name="AddAlbum"
         component={AddAlbum}
+        options={{
+          title: "Welcome",
+          cardStyle: {
+            backgroundColor: "black",
+          },
+        }}
+        initialParams={context.route.params}
+      />
+      <Stack.Screen
+        name="MyAlbums"
+        component={MyAlbums}
+        options={{
+          title: "Welcome",
+          cardStyle: {
+            backgroundColor: "black",
+          },
+        }}
+        initialParams={context.route.params}
+      />
+      <Stack.Screen
+        name="MyMusic"
+        component={MyMusic}
+        options={{
+          title: "Welcome",
+          cardStyle: {
+            backgroundColor: "black",
+          },
+        }}
+        initialParams={context.route.params}
+      />
+      <Stack.Screen
+        name="MyCollection"
+        component={MyCollection}
         options={{
           title: "Welcome",
           cardStyle: {
