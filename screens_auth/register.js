@@ -1,15 +1,16 @@
 import { CheckBox } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import FormButton from "../components/FormButton";
 import React from "react";
 
 import {
-	Image,
 	ImageBackground,
 	StatusBar,
 	StyleSheet,
 	Text,
 	TextInput,
+	TouchableOpacity,
 	View,
 } from "react-native";
 
@@ -56,10 +57,20 @@ class Register extends React.Component {
 				>
 					<View style={styles.container}>
 						<View style={styles.pageHeader}>
-							<Image
-								source={require("../assets/Crossmark.png")}
+							<TouchableOpacity
 								style={styles.crossmark}
-							/>
+								onPress={() => {
+									this.props.navigation.navigate(
+										"Authentication"
+									);
+								}}
+							>
+								<FontAwesome
+									name={"times"}
+									size={24}
+									color={"#0D0D0D"}
+								/>
+							</TouchableOpacity>
 							<Text style={styles.pageHeaderText}>Sign Up</Text>
 						</View>
 
@@ -166,8 +177,8 @@ const styles = StyleSheet.create({
 	},
 
 	crossmark: {
-		flex: 1,
-		resizeMode: "contain",
+		position: "absolute",
+		left: 16,
 	},
 
 	form: {
@@ -191,6 +202,8 @@ const styles = StyleSheet.create({
 
 	pageHeader: {
 		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
 		backgroundColor: "#F2F2F2",
 		borderRadius: 40,
 		borderColor: "#0D0D0D",
@@ -198,13 +211,10 @@ const styles = StyleSheet.create({
 		borderWidth: 3,
 		height: 57,
 		width: 330,
-		justifyContent: "space-evenly",
-		alignItems: "center",
 		marginBottom: 20,
 	},
 
 	pageHeaderText: {
-		flex: 2,
 		fontFamily: "Courier Prime Bold",
 		fontStyle: "normal",
 		fontWeight: "bold",

@@ -2,14 +2,15 @@ import { CheckBox } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormButton from "../components/FormButton";
 import React from "react";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import {
-	Image,
 	ImageBackground,
 	StatusBar,
 	StyleSheet,
 	Text,
 	TextInput,
+	TouchableOpacity,
 	View,
 } from "react-native";
 
@@ -62,12 +63,21 @@ class Login extends React.Component {
 				>
 					<View style={styles.container}>
 						<View style={styles.pageHeader}>
-							<Image
-								source={require("../assets/Crossmark.png")}
+							<TouchableOpacity
 								style={styles.crossmark}
-							/>
+								onPress={() => {
+									this.props.navigation.navigate(
+										"Authentication"
+									);
+								}}
+							>
+								<FontAwesome
+									name={"times"}
+									size={24}
+									color={"#0D0D0D"}
+								/>
+							</TouchableOpacity>
 							<Text style={styles.pageHeaderText}>Log In</Text>
-							<View />
 						</View>
 						<View style={styles.form}>
 							<TextInput
@@ -98,7 +108,7 @@ class Login extends React.Component {
 							/>
 							<FormButton
 								onPress={this.onSubmit}
-								buttonTitle="Login"
+								buttonTitle="Log In"
 							/>
 						</View>
 					</View>
@@ -144,8 +154,8 @@ const styles = StyleSheet.create({
 	},
 
 	crossmark: {
-		flex: 1,
-		resizeMode: "contain",
+		position: "absolute",
+		left: 16,
 	},
 
 	form: {
@@ -176,13 +186,12 @@ const styles = StyleSheet.create({
 		borderWidth: 3,
 		height: 57,
 		width: 330,
-		justifyContent: "space-evenly",
+		justifyContent: "center",
 		alignItems: "center",
 		marginBottom: 20,
 	},
 
 	pageHeaderText: {
-		flex: 2,
 		fontFamily: "Courier Prime Bold",
 		fontStyle: "normal",
 		fontWeight: "bold",

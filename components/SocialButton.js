@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
-import { windowHeight, windowWidth } from "../utils/dimensions";
 
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
