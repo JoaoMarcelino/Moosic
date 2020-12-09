@@ -1,6 +1,7 @@
 import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { AppearanceProvider } from "react-native-appearance";
 
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -47,11 +48,13 @@ class App extends React.Component {
 	render() {
 		if (this.state.fontsLoaded) {
 			return (
-				<AppProvider>
-					<AppConsumer>
-						{(context) => <Routes context={context} />}
-					</AppConsumer>
-				</AppProvider>
+				<AppearanceProvider>
+					<AppProvider>
+						<AppConsumer>
+							{(context) => <Routes context={context} />}
+						</AppConsumer>
+					</AppProvider>
+				</AppearanceProvider>
 			);
 		} else {
 			return <AppLoading />;
