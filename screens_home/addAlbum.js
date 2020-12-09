@@ -36,9 +36,9 @@ class AddAlbum extends React.Component {
       querySnapshot.forEach(function (doc) {
         object = doc.data();
         object.id = doc.id;
-        musicList.push(object);
+        albumList.push(object);
       });
-      this.setState({ musicList });
+      this.setState({ albumList });
       this.setState({ loading: false });
     });
   }
