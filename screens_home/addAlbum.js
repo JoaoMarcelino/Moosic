@@ -7,9 +7,11 @@ import {
   Text,
   TextInput,
   View,
+  TouchableOpacity,
 } from "react-native";
 import FormButton from "../components/FormButton";
 import { SafeAreaView } from "react-native-safe-area-context";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const initial_state = {
   title: "",
@@ -65,6 +67,14 @@ class AddAlbum extends React.Component {
         >
           <View style={styles.container}>
             <View style={styles.pageHeader}>
+              <TouchableOpacity
+                style={styles.crossmark}
+                onPress={() => {
+                  this.props.navigation.navigate("MyAlbums");
+                }}
+              >
+                <FontAwesome name={"times"} size={24} color={"#0D0D0D"} />
+              </TouchableOpacity>
               <Text style={styles.pageHeaderText}>Add Album</Text>
             </View>
             <View style={styles.form}>
@@ -142,6 +152,7 @@ const styles = StyleSheet.create({
   },
 
   pageHeader: {
+    flexDirection: "row",
     backgroundColor: "#F2F2F2",
     borderRadius: 40,
     borderColor: "#0D0D0D",
