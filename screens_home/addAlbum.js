@@ -50,6 +50,7 @@ class AddAlbum extends React.Component {
     const { title, artist, year } = this.state;
     let obj = { title, artist, year };
     this.props.route.params.context.addAlbum(obj);
+    this.props.navigation.navigate("MyAlbums");
   };
 
   removeMusic = (obj) => {

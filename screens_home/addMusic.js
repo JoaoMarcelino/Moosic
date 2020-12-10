@@ -51,6 +51,7 @@ class AddMusic extends React.Component {
     const { title, artist, album } = this.state;
     let obj = { title, artist, album };
     this.props.route.params.context.addMusic(obj);
+    this.props.navigation.navigate("MyMusic");
   };
 
   removeMusic = (obj) => {
