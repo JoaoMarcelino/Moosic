@@ -16,7 +16,7 @@ class Profile extends React.Component {
             <View style={styles.formButtons}>
               <FormButton
                 onPress={() => {
-                  this.props.navigation.navigate("Settings");
+                  this.props.navigation.navigate("SettingsStack");
                 }}
                 buttonTitle="Settings"
               />

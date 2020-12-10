@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Animated } from "react-native";
 
 import Profile from "../screens_home/profile";
-import Settings from "../screens_home/settings";
+import SettingsStack from "../navigation/settingsStack";
 
 const Stack = createStackNavigator();
 
@@ -30,8 +30,8 @@ const ProfileStack = (context) => {
         initialParams={context.route.params}
       />
       <Stack.Screen
-        name="Settings"
-        component={Settings}
+        name="SettingsStack"
+        component={SettingsStack}
         options={{
           title: "Settings",
           cardStyle: {
