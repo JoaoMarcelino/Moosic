@@ -5,225 +5,209 @@ import FormButton from "../components/FormButton";
 import React from "react";
 
 import {
-	ImageBackground,
-	StatusBar,
-	StyleSheet,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
+  ImageBackground,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const initialState = {
-	username: "",
-	email: "",
-	password: "",
-	passwordcheck: "",
-	terms: false,
+  username: "",
+  email: "",
+  password: "",
+  passwordcheck: "",
+  terms: false,
 };
 
 class Register extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { ...initialState };
-		this.context = this.props.route.params.context;
-		console.log("register", this.context);
-	}
+  constructor(props) {
+    super(props);
+    this.state = { ...initialState };
+    this.context = this.props.route.params.context;
+    console.log("register", this.context);
+  }
 
-	onSubmit = (event) => {
-		const { username, email, password, passwordcheck, terms } = this.state;
-		this.props.route.params.context
-			.doCreateUserWithEmailAndPassword(email, password)
-			.then((authUser) => {
-				this.setState({ ...initialState });
-				//this.props.navigation.navigate('HomeView');
-			})
-			.catch((error) => {
-				this.setState({ error });
-				console.log(error);
-			});
+  onSubmit = (event) => {
+    const { username, email, password, passwordcheck, terms } = this.state;
+    this.props.route.params.context
+      .doCreateUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        this.setState({ ...initialState });
+        //this.props.navigation.navigate('HomeView');
+      })
+      .catch((error) => {
+        this.setState({ error });
+        console.log(email);
+        console.log(error);
+      });
 
-		event.preventDefault();
-	};
+    event.preventDefault();
+  };
 
-	render() {
-		const { username, email, password, passwordcheck, terms } = this.state;
-		return (
-			<SafeAreaView style={styles.safeView}>
-				<StatusBar backgroundColor="black" barStyle="light-content" />
-				<ImageBackground
-					source={require("../assets/400x800.png")}
-					style={styles.backgroundImage}
-				>
-					<View style={styles.container}>
-						<View style={styles.pageHeader}>
-							<TouchableOpacity
-								style={styles.crossmark}
-								onPress={() => {
-									this.props.navigation.navigate(
-										"Authentication"
-									);
-								}}
-							>
-								<FontAwesome
-									name={"times"}
-									size={24}
-									color={"#0D0D0D"}
-								/>
-							</TouchableOpacity>
-							<Text style={styles.pageHeaderText}>Sign Up</Text>
-						</View>
+  render() {
+    const { username, email, password, passwordcheck, terms } = this.state;
+    return (
+      <SafeAreaView style={styles.safeView}>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
+        <ImageBackground
+          source={require("../assets/400x800.png")}
+          style={styles.backgroundImage}
+        >
+          <View style={styles.container}>
+            <View style={styles.pageHeader}>
+              <TouchableOpacity
+                style={styles.crossmark}
+                onPress={() => {
+                  this.props.navigation.navigate("Authentication");
+                }}
+              >
+                <FontAwesome name={"times"} size={24} color={"#0D0D0D"} />
+              </TouchableOpacity>
+              <Text style={styles.pageHeaderText}>Sign Up</Text>
+            </View>
 
-						<View style={styles.form}>
-							<TextInput
-								style={styles.inputForm}
-								name="username"
-								placeholder="Name"
-								placeholderStyle={styles.inputFormText}
-								placeholderTextColor="#0D0D0D"
-								onChangeText={(text) =>
-									(this.state.username = text)
-								}
-								defaultValue={username}
-							/>
+            <View style={styles.form}>
+              <TextInput
+                style={styles.inputForm}
+                name="username"
+                placeholder="Name"
+                placeholderStyle={styles.inputFormText}
+                placeholderTextColor="#0D0D0D"
+                onChangeText={(text) => (this.state.username = text)}
+                defaultValue={username}
+              />
 
-							<TextInput
-								style={styles.inputForm}
-								name="email"
-								placeholder="Email"
-								placeholderStyle={styles.inputFormText}
-								placeholderTextColor="#0D0D0D"
-								onChangeText={(text) =>
-									(this.state.email = text)
-								}
-								defaultValue={email}
-							/>
+              <TextInput
+                style={styles.inputForm}
+                name="email"
+                placeholder="Email"
+                placeholderStyle={styles.inputFormText}
+                placeholderTextColor="#0D0D0D"
+                onChangeText={(text) => (this.state.email = text)}
+                defaultValue={email}
+              />
 
-							<TextInput
-								name="password"
-								style={styles.inputForm}
-								placeholder="Password"
-								placeholderTextColor="#0D0D0D"
-								secureTextEntry={true}
-								onChangeText={(text) =>
-									(this.state.password = text)
-								}
-								defaultValue={password}
-							/>
+              <TextInput
+                name="password"
+                style={styles.inputForm}
+                placeholder="Password"
+                placeholderTextColor="#0D0D0D"
+                secureTextEntry={true}
+                onChangeText={(text) => (this.state.password = text)}
+                defaultValue={password}
+              />
 
-							<TextInput
-								name="passwordcheck"
-								style={styles.inputForm}
-								placeholder="Confirm Password"
-								placeholderTextColor="#0D0D0D"
-								secureTextEntry={true}
-								onChangeText={(text) =>
-									(this.state.passwordcheck = text)
-								}
-								defaultValue={passwordcheck}
-							/>
+              <TextInput
+                name="passwordcheck"
+                style={styles.inputForm}
+                placeholder="Confirm Password"
+                placeholderTextColor="#0D0D0D"
+                secureTextEntry={true}
+                onChangeText={(text) => (this.state.passwordcheck = text)}
+                defaultValue={passwordcheck}
+              />
 
-							<CheckBox
-								title="I agree to the terms of service"
-								containerStyle={styles.checkboxContainer}
-								textStyle={styles.checkboxContainerText}
-							/>
+              <CheckBox
+                title="I agree to the terms of service"
+                containerStyle={styles.checkboxContainer}
+                textStyle={styles.checkboxContainerText}
+              />
 
-							<FormButton
-								onPress={this.onSubmit}
-								buttonTitle="Sign Up"
-							/>
-						</View>
-					</View>
-					<View style={{ flex: 1 }} />
-				</ImageBackground>
-			</SafeAreaView>
-		);
-	}
+              <FormButton onPress={this.onSubmit} buttonTitle="Sign Up" />
+            </View>
+          </View>
+          <View style={{ flex: 1 }} />
+        </ImageBackground>
+      </SafeAreaView>
+    );
+  }
 }
 
 export default Register;
 
 //No font on placeholders cause of a react bug
 const styles = StyleSheet.create({
-	backgroundImage: {
-		flex: 1,
-		resizeMode: "cover",
-	},
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
+  },
 
-	container: {
-		flex: 3,
-		alignItems: "center",
-		padding: 36,
-	},
+  container: {
+    flex: 3,
+    alignItems: "center",
+    padding: 36,
+  },
 
-	checkboxContainer: {
-		backgroundColor: "#F2F2F2",
-		borderColor: "#0D0D0D",
-		borderStyle: "solid",
-		borderWidth: 3,
-		borderRadius: 100,
-		height: 40,
-		justifyContent: "center",
-	},
+  checkboxContainer: {
+    backgroundColor: "#F2F2F2",
+    borderColor: "#0D0D0D",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderRadius: 100,
+    height: 40,
+    justifyContent: "center",
+  },
 
-	checkboxContainerText: {
-		fontFamily: "Inter Regular",
-		fontStyle: "normal",
-		fontWeight: "600",
-		fontSize: 14,
-		lineHeight: 17,
-		color: "#0D0D0D",
-	},
+  checkboxContainerText: {
+    fontFamily: "Inter Regular",
+    fontStyle: "normal",
+    fontWeight: "600",
+    fontSize: 14,
+    lineHeight: 17,
+    color: "#0D0D0D",
+  },
 
-	crossmark: {
-		position: "absolute",
-		left: 16,
-	},
+  crossmark: {
+    position: "absolute",
+    left: 16,
+  },
 
-	form: {
-		flex: 1,
-		alignItems: "center",
-		justifyContent: "space-evenly",
-	},
+  form: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
 
-	inputForm: {
-		backgroundColor: "#F2F2F2",
-		borderRadius: 8,
-		borderColor: "#0D0D0D",
-		borderStyle: "solid",
-		borderWidth: 3,
-		height: 57,
-		width: 330,
-		paddingLeft: 16,
-		fontSize: 16,
-		lineHeight: 19,
-	},
+  inputForm: {
+    backgroundColor: "#F2F2F2",
+    borderRadius: 8,
+    borderColor: "#0D0D0D",
+    borderStyle: "solid",
+    borderWidth: 3,
+    height: 57,
+    width: 330,
+    paddingLeft: 16,
+    fontSize: 16,
+    lineHeight: 19,
+  },
 
-	pageHeader: {
-		flexDirection: "row",
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "#F2F2F2",
-		borderRadius: 40,
-		borderColor: "#0D0D0D",
-		borderStyle: "solid",
-		borderWidth: 3,
-		height: 57,
-		width: 330,
-		marginBottom: 20,
-	},
+  pageHeader: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F2F2F2",
+    borderRadius: 40,
+    borderColor: "#0D0D0D",
+    borderStyle: "solid",
+    borderWidth: 3,
+    height: 57,
+    width: 330,
+    marginBottom: 20,
+  },
 
-	pageHeaderText: {
-		fontFamily: "Courier Prime Bold",
-		fontStyle: "normal",
-		fontWeight: "bold",
-		fontSize: 36,
-		lineHeight: 40,
-		color: "#358C7C",
-	},
+  pageHeaderText: {
+    fontFamily: "Courier Prime Bold",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: 36,
+    lineHeight: 40,
+    color: "#358C7C",
+  },
 
-	safeView: {
-		flex: 1,
-	},
+  safeView: {
+    flex: 1,
+  },
 });
