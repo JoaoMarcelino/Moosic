@@ -38,6 +38,11 @@ class MyAlbums extends React.Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="black" barStyle="light-content" />
         <Text>My Albums</Text>
+        <FormButton
+          onPress={() =>
+            this.props.navigation.navigate("AddAlbum")
+          }
+        />
         <FlatList
           data={albumList}
           renderItem={({ item }) => (

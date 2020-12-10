@@ -25,7 +25,7 @@ class AddMusic extends React.Component {
 		super(props);
 		this.state = { ...initial_state };
 		this.context = this.props.route.params.context;
-		console.log("add music", this.context);
+		console.log("add music", this.props.route.params);
 	}
 
 	componentDidMount() {

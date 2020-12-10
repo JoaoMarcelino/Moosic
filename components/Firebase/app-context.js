@@ -78,6 +78,7 @@ export class AppProvider extends React.Component {
       .collection("Music")
       .add(itemObj)
       .catch((err) => alert(err));
+
   };
 
   removeMusic = (itemObj) => {

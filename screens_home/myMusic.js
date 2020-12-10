@@ -1,6 +1,7 @@
 import React from "react";
 import { StatusBar, Text, View, StyleSheet, FlatList } from "react-native";
 import FormButton from "../components/FormButton";
+
 const INITIAL_STATE = {
   title: "Africa",
   artist: "Toto",
@@ -9,11 +10,30 @@ const INITIAL_STATE = {
   musicList: null,
 };
 
+
 class MyMusic extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+  }
+
+  updateMusic(item){
+    this.props.route.params.context.removeMusic(item);
+    let musicList = [];
+    let object = {};
+    console.log(this.props.route.params.context.musics());
+    this.props.route.params.context.musics().then((querySnapshot) => {
+      querySnapshot.forEach(function (doc) {
+        object = doc.data();
+        object.id = doc.id;
+        musicList.push(object);
+        
+      });
+      this.setState({ musicList });
+    });
+    
+    console.log(musicList);
   }
 
   componentDidMount() {
@@ -38,8 +58,14 @@ class MyMusic extends React.Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="black" barStyle="light-content" />
         <Text>My Music</Text>
+        <FormButton
+          onPress={() =>
+            this.props.navigation.navigate("AddMusic", {musicList})
+          }
+        />
         <FlatList
           data={musicList}
+          extraData={musicList}
           renderItem={({ item }) => (
             <View style={styles.container}>
               <Text style={styles.item}>
@@ -47,8 +73,9 @@ class MyMusic extends React.Component {
               </Text>
               <View style={styles.form}>
                 <FormButton
-                  onPress={() =>
-                    this.props.route.params.context.removeMusic(item)
+                  onPress={() => {
+                      this.updateMusic(item);
+                    }
                   }
                   buttonTitle="Remove"
                 />
