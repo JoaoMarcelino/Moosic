@@ -1,6 +1,8 @@
 import React from "react";
 import { StatusBar, Text, View, StyleSheet } from "react-native";
 import FormButton from "../components/FormButton";
+import firebase from "firebase";
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
