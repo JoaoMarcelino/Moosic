@@ -1,8 +1,15 @@
 import React from "react";
-import { ImageBackground, StatusBar, StyleSheet, View } from "react-native";
+import {
+	Image,
+	ImageBackground,
+	StatusBar,
+	StyleSheet,
+	View,
+} from "react-native";
 import SettingsButton from "../components/SettingsButton";
 import SocialButton from "../components/SocialButton";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HeaderBar from "../components/HeaderBar";
 
 class Settings extends React.Component {
 	constructor(props) {
@@ -13,6 +20,12 @@ class Settings extends React.Component {
 		return (
 			<SafeAreaView style={styles.safeView}>
 				<StatusBar backgroundColor="black" barStyle="light-content" />
+				<HeaderBar
+					backgroundColor="#0D0D0D"
+					title="Settings"
+					screenProps={this.props}
+					addOnPress={null}
+				/>
 				<ImageBackground
 					source={require("../assets/400x800.png")}
 					style={styles.backgroundImage}
@@ -35,6 +48,12 @@ class Settings extends React.Component {
 								);
 							}}
 						/>
+
+						<SettingsButton
+							buttonTitle="Change Username"
+							onPress={null}
+						/>
+
 						<SettingsButton
 							buttonTitle="Change Password"
 							onPress={() => {
@@ -43,11 +62,23 @@ class Settings extends React.Component {
 								);
 							}}
 						/>
+
+						<SettingsButton
+							buttonTitle="Change Email"
+							onPress={null}
+						/>
+
 						<SettingsButton
 							buttonTitle="Credits"
 							onPress={() => {
 								this.props.navigation.navigate("Credits");
 							}}
+						/>
+					</View>
+					<View style={styles.imageContainer}>
+						<Image
+							source={require("../assets/settings-end.png")}
+							style={styles.image}
 						/>
 					</View>
 				</ImageBackground>
@@ -65,9 +96,21 @@ const styles = StyleSheet.create({
 	},
 
 	container: {
-		flex: 1,
+		flex: 2,
+		paddingTop: 20,
 		alignItems: "center",
-		justifyContent: "center",
+		justifyContent: "space-evenly",
+	},
+
+	image: {
+		resizeMode: "contain",
+		width: 400,
+		height: 63,
+	},
+
+	imageContainer: {
+		flex: 1,
+		justifyContent: "flex-end",
 	},
 
 	safeView: {
