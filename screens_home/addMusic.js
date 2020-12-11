@@ -68,7 +68,11 @@ class AddMusic extends React.Component {
 					source={require("../assets/400x800.png")}
 					style={styles.backgroundImage}
 				>
-					<HeaderBar backgroundColor="#0D0D0D" title="Add Music" />
+					<HeaderBar
+						backgroundColor="#0D0D0D"
+						title="Add Music"
+						propers={this.props}
+					/>
 					<View style={styles.container}>
 						<View style={styles.form}>
 							<TextInput

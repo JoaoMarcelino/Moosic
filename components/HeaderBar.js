@@ -3,11 +3,17 @@ import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-const HeaderBar = ({ backgroundColor, title }) => {
+const HeaderBar = ({ backgroundColor, title, propers }) => {
 	let bgColor = backgroundColor;
 	return (
 		<View style={[styles.header, { backgroundColor: bgColor }]}>
-			<FontAwesome name={"arrow-left"} size={20} color={"#55D9C1"} />
+			<TouchableOpacity
+				onPress={() => {
+					propers.navigation.goBack();
+				}}
+			>
+				<FontAwesome name={"arrow-left"} size={20} color={"#55D9C1"} />
+			</TouchableOpacity>
 			<Text style={styles.text}>{title}</Text>
 			<FontAwesome name={"plus"} size={20} color={"#55D9C1"} />
 		</View>
