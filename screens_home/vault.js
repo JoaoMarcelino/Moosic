@@ -1,15 +1,13 @@
 import React from "react";
 import {
+	Image,
 	ImageBackground,
 	StatusBar,
-	Text,
-	View,
 	StyleSheet,
+	View,
 } from "react-native";
-import FormButton from "../components/FormButton";
-import VaultStack from "../navigation/vaultStack";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 class Vault extends React.Component {
 	constructor(props) {
@@ -25,28 +23,42 @@ class Vault extends React.Component {
 					style={styles.backgroundImage}
 				>
 					<View style={styles.container}>
-						<View style={styles.formButtons}>
-							<FormButton
-								onPress={() => {
-									this.props.navigation.navigate("MyMusic");
-								}}
-								buttonTitle="My Music"
+						<TouchableOpacity
+							onPress={() => {
+								this.props.navigation.navigate("MyMusic");
+							}}
+						>
+							<Image
+								style={styles.images}
+								source={require("../assets/vaultAssets/music.png")}
 							/>
-							<FormButton
-								onPress={() => {
-									this.props.navigation.navigate("MyAlbums");
-								}}
-								buttonTitle="My Albums"
+						</TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => {
+								this.props.navigation.navigate("MyAlbums");
+							}}
+						>
+							<Image
+								style={styles.images}
+								source={require("../assets/vaultAssets/albums.png")}
 							/>
-							<FormButton
-								onPress={() => {
-									this.props.navigation.navigate(
-										"MyCollection"
-									);
-								}}
-								buttonTitle="My Collection"
+						</TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => {
+								this.props.navigation.navigate("MyCollection");
+							}}
+						>
+							<Image
+								style={styles.images}
+								source={require("../assets/vaultAssets/artists.png")}
 							/>
-						</View>
+						</TouchableOpacity>
+						<TouchableOpacity>
+							<Image
+								style={styles.images}
+								source={require("../assets/vaultAssets/personal.png")}
+							/>
+						</TouchableOpacity>
 					</View>
 				</ImageBackground>
 			</SafeAreaView>
@@ -64,11 +76,39 @@ const styles = StyleSheet.create({
 
 	container: {
 		flex: 1,
-		alignItems: "center",
-		padding: 25,
+		flexDirection: "row",
+		flexWrap: "wrap",
+		alignContent: "center",
+		justifyContent: "space-evenly",
+	},
+
+	images: {
+		marginBottom: 5,
+		marginTop: 5,
+		height: 226,
+		width: 150,
 	},
 
 	safeView: {
 		flex: 1,
 	},
 });
+
+/*<FormButton
+							onPress={() => {
+								this.props.navigation.navigate("MyMusic");
+							}}
+							buttonTitle="My Music"
+						/>
+						<FormButton
+							onPress={() => {
+								this.props.navigation.navigate("MyAlbums");
+							}}
+							buttonTitle="My Albums"
+						/>
+						<FormButton
+							onPress={() => {
+								this.props.navigation.navigate("MyCollection");
+							}}
+							buttonTitle="My Collection"
+						/>*/
