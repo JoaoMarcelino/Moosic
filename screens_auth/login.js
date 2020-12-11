@@ -31,7 +31,7 @@ class Login extends React.Component {
     const { email, password, terms } = this.state;
 
     const email1 = "admin@admin.com";
-    const password1 = "admin1";
+    const password1 = "admin2";
 
     this.props.route.params.context
       .doSignInWithEmailAndPassword(email1, password1)

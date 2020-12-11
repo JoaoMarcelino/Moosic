@@ -23,7 +23,6 @@ class MyMusic extends React.Component {
 
   componentWillFocus() {
     this.updateMusic2();
-    console.log("focus");
   }
   updateMusic2() {
     let musicList = [];

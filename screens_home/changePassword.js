@@ -10,13 +10,29 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Alert,
 } from "react-native";
-
-const initialState = {};
+import firebase from "firebase";
+const initialState = { p1: "", p2: "" };
 class ChangePassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...initialState };
+  }
+
+  changePassword(p1, p2) {
+    if (p1 == p2) {
+      var user = firebase.auth().currentUser;
+      user
+        .updatePassword(p1)
+        .then(this.props.navigation.navigate("Settings"))
+        .catch(function (error) {
+          // An error happened.
+        });
+    } else {
+      //uma mensagem de erro ou popup era cool @vinagrito
+      alert("Passwords don't match");
+    }
   }
 
   render() {
@@ -46,6 +62,7 @@ class ChangePassword extends React.Component {
                 placeholderStyle={styles.inputFormText}
                 placeholderTextColor="#0D0D0D"
                 secureTextEntry={true}
+                onChangeText={(text) => (this.state.p1 = text)}
                 // CODIGO DE ACTUALLY MUDAR O NOME AQUI PROVAVELMENTE  @JOAO TEIXEIRA
               />
               <TextInput
@@ -54,9 +71,15 @@ class ChangePassword extends React.Component {
                 placeholderStyle={styles.inputFormText}
                 placeholderTextColor="#0D0D0D"
                 secureTextEntry={true}
+                onChangeText={(text) => (this.state.p2 = text)}
                 //  DEVE CHECKAR SE SAO IGUAIS I GUESS, SO DEIXA MUDAR SE FOREM IGUAIS SENAO MANDA UM alert() OU ALGO DO GENERO @JOAO TEIXEIRA
               />
-              <FormButton onPress={this.onSubmit} buttonTitle="Save Changes" />
+              <FormButton
+                onPress={() =>
+                  this.changePassword(this.state.p1, this.state.p2)
+                }
+                buttonTitle="Save Changes"
+              />
             </View>
           </View>
           <View style={{ flex: 2 }} />

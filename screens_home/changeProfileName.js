@@ -11,12 +11,30 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import firebase from "firebase";
 
-const initialState = {};
+const initialState = { name: "" };
 class ChangeProfileName extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...initialState };
+  }
+
+  changeName(name) {
+    var user = firebase.auth().currentUser;
+    console.log("vim aqui");
+    user
+      .updateProfile({
+        displayName: name,
+      })
+      .then(function () {
+        console.log("update name");
+        // Update successful.
+      })
+      .catch(function (error) {
+        console.log("update name error");
+        // An error happened.
+      });
   }
 
   render() {
@@ -45,16 +63,13 @@ class ChangeProfileName extends React.Component {
                 placeholder="New Profile Name"
                 placeholderStyle={styles.inputFormText}
                 placeholderTextColor="#0D0D0D"
+                onChangeText={(text) => (this.state.name = text)}
                 // CODIGO DE ACTUALLY MUDAR O NOME AQUI PROVAVELMENTE  @JOAO TEIXEIRA
               />
-              <TextInput
-                style={styles.inputForm}
-                placeholder="Confirm New Profile Name"
-                placeholderStyle={styles.inputFormText}
-                placeholderTextColor="#0D0D0D"
-                //  DEVE CHECKAR SE SAO IGUAIS I GUESS, SO DEIXA MUDAR SE FOREM IGUAIS SENAO MANDA UM alert() OU ALGO DO GENERO @JOAO TEIXEIRA
+              <FormButton
+                onPress={() => this.changeName(this.state.name)}
+                buttonTitle="Save Changes"
               />
-              <FormButton onPress={this.onSubmit} buttonTitle="Save Changes" />
             </View>
           </View>
           <View style={{ flex: 2 }} />
