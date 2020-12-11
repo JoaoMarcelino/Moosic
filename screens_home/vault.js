@@ -93,22 +93,3 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 });
-
-/*<FormButton
-							onPress={() => {
-								this.props.navigation.navigate("MyMusic");
-							}}
-							buttonTitle="My Music"
-						/>
-						<FormButton
-							onPress={() => {
-								this.props.navigation.navigate("MyAlbums");
-							}}
-							buttonTitle="My Albums"
-						/>
-						<FormButton
-							onPress={() => {
-								this.props.navigation.navigate("MyCollection");
-							}}
-							buttonTitle="My Collection"
-						/>*/
