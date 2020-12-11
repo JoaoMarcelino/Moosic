@@ -71,7 +71,8 @@ class AddMusic extends React.Component {
 					<HeaderBar
 						backgroundColor="#0D0D0D"
 						title="Add Music"
-						propers={this.props}
+						screenProps={this.props}
+						addOnPress={null}
 					/>
 					<View style={styles.container}>
 						<View style={styles.form}>

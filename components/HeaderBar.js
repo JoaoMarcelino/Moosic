@@ -3,19 +3,26 @@ import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-const HeaderBar = ({ backgroundColor, title, propers }) => {
+const HeaderBar = ({ backgroundColor, title, screenProps, addOnPress }) => {
 	let bgColor = backgroundColor;
 	return (
 		<View style={[styles.header, { backgroundColor: bgColor }]}>
 			<TouchableOpacity
+				style={{ padding: 25 }}
 				onPress={() => {
-					propers.navigation.goBack();
+					screenProps.navigation.goBack();
 				}}
 			>
 				<FontAwesome name={"arrow-left"} size={20} color={"#55D9C1"} />
 			</TouchableOpacity>
 			<Text style={styles.text}>{title}</Text>
-			<FontAwesome name={"plus"} size={20} color={"#55D9C1"} />
+			<TouchableOpacity style={{ padding: 25 }} onPress={addOnPress}>
+				<FontAwesome
+					name={"plus"}
+					size={20}
+					color={addOnPress === null ? "#0D0D0D" : "#55D9C1"}
+				/>
+			</TouchableOpacity>
 		</View>
 	);
 };
@@ -29,8 +36,6 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
-		paddingLeft: 25,
-		paddingRight: 25,
 	},
 
 	text: {
