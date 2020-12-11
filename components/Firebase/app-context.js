@@ -78,7 +78,6 @@ export class AppProvider extends React.Component {
       .collection("Music")
       .add(itemObj)
       .catch((err) => alert(err));
-
   };
 
   removeMusic = (itemObj) => {
@@ -88,6 +87,72 @@ export class AppProvider extends React.Component {
       .collection("User")
       .doc(uid)
       .collection("Music")
+      .doc(itemObj.id)
+      .delete()
+      .then(function () {
+        console.log("Document successfully deleted!");
+        //window.location.reload(false);
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+  };
+
+  artists = () => {
+    const uid = this.auth.currentUser.uid;
+    return this.db.collection("User").doc(uid).collection("Artist").get();
+  };
+
+  addArtist = (itemObj) => {
+    const uid = this.auth.currentUser.uid;
+    this.db
+      .collection("User")
+      .doc(uid)
+      .collection("Artist")
+      .add(itemObj)
+      .catch((err) => alert(err));
+  };
+
+  removeArtist = (itemObj) => {
+    const uid = this.auth.currentUser.uid;
+    console.log(itemObj);
+    this.db
+      .collection("User")
+      .doc(uid)
+      .collection("Artist")
+      .doc(itemObj.id)
+      .delete()
+      .then(function () {
+        console.log("Document successfully deleted!");
+        //window.location.reload(false);
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+  };
+
+  collection = () => {
+    const uid = this.auth.currentUser.uid;
+    return this.db.collection("User").doc(uid).collection("Collection").get();
+  };
+
+  addCollection = (itemObj) => {
+    const uid = this.auth.currentUser.uid;
+    this.db
+      .collection("User")
+      .doc(uid)
+      .collection("Collection")
+      .add(itemObj)
+      .catch((err) => alert(err));
+  };
+
+  removeCollection = (itemObj) => {
+    const uid = this.auth.currentUser.uid;
+    console.log(itemObj);
+    this.db
+      .collection("User")
+      .doc(uid)
+      .collection("Collection")
       .doc(itemObj.id)
       .delete()
       .then(function () {
@@ -117,6 +182,14 @@ export class AppProvider extends React.Component {
           albums: this.albums,
           addAlbum: this.addAlbum,
           removeAlbum: this.removeAlbum,
+
+          artists: this.artists,
+          addArtist: this.addArtist,
+          removeArtist: this.removeArtist,
+
+          collection: this.collection,
+          addCollection: this.addCollection,
+          removeCollection: this.removeCollection,
         }}
       >
         {this.props.children}

@@ -15,51 +15,49 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const initial_state = {
-  title: "",
-  artist: "",
-  year: "",
+  name: "",
   loading: false,
-  albumList: null,
+  artistList: null,
 };
 
-class AddAlbum extends React.Component {
+class AddArtist extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...initial_state };
     this.context = this.props.route.params.context;
-    console.log("add album", this.context);
+    console.log("add artist", this.context);
   }
 
   componentDidMount() {
-    let albumList = [];
+    let artistList = [];
     let object = {};
     this.setState({ loading: true });
-    console.log(this.props.route.params.context.albums());
-    this.props.route.params.context.albums().then((querySnapshot) => {
+    console.log(this.props.route.params.context.artists());
+    this.props.route.params.context.artists().then((querySnapshot) => {
       querySnapshot.forEach(function (doc) {
         object = doc.data();
         object.id = doc.id;
-        albumList.push(object);
+        artistList.push(object);
       });
-      this.setState({ albumList });
+      this.setState({ artistList });
       this.setState({ loading: false });
     });
   }
 
-  addAlbum = () => {
+  addArtist = () => {
     //console.log(this.props.route.params.context);
-    const { title, artist, year } = this.state;
-    let obj = { title, artist, year };
-    this.props.route.params.context.addAlbum(obj);
-    this.props.navigation.navigate("MyAlbums");
+    const { name } = this.state;
+    let obj = { name };
+    this.props.route.params.context.addArtist(obj);
+    this.props.navigation.navigate("MyArtists");
   };
 
   removeMusic = (obj) => {
-    this.props.route.params.context.removeAlbum(obj);
+    this.props.route.params.context.removeArtist(obj);
   };
 
   render() {
-    const { title, artist, year, albumList } = this.state;
+    const { name, artistList } = this.state;
     return (
       <SafeAreaView style={styles.safeView}>
         <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -69,7 +67,7 @@ class AddAlbum extends React.Component {
         >
           <HeaderBar
             backgroundColor="#0D0D0D"
-            title="Add Album"
+            title="Add Artist"
             screenProps={this.props}
             addOnPress={null}
           />
@@ -77,40 +75,18 @@ class AddAlbum extends React.Component {
             <View style={styles.form}>
               <TextInput
                 style={styles.inputForm}
-                name="Title"
-                placeholder="Title"
+                name="Name"
+                placeholder="Name"
                 placeholderStyle={styles.inputFormText}
                 placeholderTextColor="#0D0D0D"
-                onChangeText={(text) => (this.state.title = text)}
-                defaultValue={title}
-              />
-
-              <TextInput
-                style={styles.inputForm}
-                name="Artist"
-                placeholder="Artist"
-                placeholderTextColor="#0D0D0D"
-                onChangeText={(text) => (this.state.artist = text)}
-                defaultValue={artist}
-              />
-
-              <TextInput
-                name="Year"
-                style={styles.inputForm}
-                placeholder="Year"
-                placeholderTextColor="#0D0D0D"
-                onChangeText={(text) => (this.state.year = text)}
-                defaultValue={year}
+                onChangeText={(text) => (this.state.name = text)}
+                defaultValue={name}
               />
 
               <FormButton
                 onPress={() => {
-                  if (this.state.title != "" && this.state.artist != "") {
-                    if (this.state.year.match(/^[0-9]+$/) != null) {
-                      this.addAlbum();
-                    } else {
-                      alert("Invalid input: Year must be a number");
-                    }
+                  if (this.state.name != "") {
+                    this.addArtist();
                   } else {
                     alert("Invalid input: There are empty fields");
                   }
@@ -127,7 +103,7 @@ class AddAlbum extends React.Component {
   }
 }
 
-export default AddAlbum;
+export default AddArtist;
 
 //No font on placeholders cause of a react bug
 const styles = StyleSheet.create({

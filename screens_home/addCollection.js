@@ -19,47 +19,47 @@ const initial_state = {
   artist: "",
   year: "",
   loading: false,
-  albumList: null,
+  collectionList: null,
 };
 
-class AddAlbum extends React.Component {
+class AddCollection extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...initial_state };
     this.context = this.props.route.params.context;
-    console.log("add album", this.context);
+    console.log("add collection", this.context);
   }
 
   componentDidMount() {
-    let albumList = [];
+    let collectionList = [];
     let object = {};
     this.setState({ loading: true });
-    console.log(this.props.route.params.context.albums());
-    this.props.route.params.context.albums().then((querySnapshot) => {
+    console.log(this.props.route.params.context.collection());
+    this.props.route.params.context.collection().then((querySnapshot) => {
       querySnapshot.forEach(function (doc) {
         object = doc.data();
         object.id = doc.id;
-        albumList.push(object);
+        collectionList.push(object);
       });
-      this.setState({ albumList });
+      this.setState({ collectionList });
       this.setState({ loading: false });
     });
   }
 
-  addAlbum = () => {
+  addCollection = () => {
     //console.log(this.props.route.params.context);
     const { title, artist, year } = this.state;
     let obj = { title, artist, year };
-    this.props.route.params.context.addAlbum(obj);
-    this.props.navigation.navigate("MyAlbums");
+    this.props.route.params.context.addCollection(obj);
+    this.props.navigation.navigate("MyCollection");
   };
 
   removeMusic = (obj) => {
-    this.props.route.params.context.removeAlbum(obj);
+    this.props.route.params.context.removeCollection(obj);
   };
 
   render() {
-    const { title, artist, year, albumList } = this.state;
+    const { title, artist, year, collectionList } = this.state;
     return (
       <SafeAreaView style={styles.safeView}>
         <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -69,7 +69,7 @@ class AddAlbum extends React.Component {
         >
           <HeaderBar
             backgroundColor="#0D0D0D"
-            title="Add Album"
+            title="Add to Collection"
             screenProps={this.props}
             addOnPress={null}
           />
@@ -107,7 +107,7 @@ class AddAlbum extends React.Component {
                 onPress={() => {
                   if (this.state.title != "" && this.state.artist != "") {
                     if (this.state.year.match(/^[0-9]+$/) != null) {
-                      this.addAlbum();
+                      this.addCollection();
                     } else {
                       alert("Invalid input: Year must be a number");
                     }
@@ -127,7 +127,7 @@ class AddAlbum extends React.Component {
   }
 }
 
-export default AddAlbum;
+export default AddCollection;
 
 //No font on placeholders cause of a react bug
 const styles = StyleSheet.create({

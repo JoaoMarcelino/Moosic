@@ -12,14 +12,12 @@ import HeaderBar from "../components/HeaderBar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const initial_state = {
-  title: "",
-  artist: "",
-  year: "",
+  name: "",
   loading: false,
-  collectionList: null,
+  artistList: null,
 };
 
-class MyCollection extends React.Component {
+class MyArtists extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...initial_state };
@@ -30,61 +28,61 @@ class MyCollection extends React.Component {
   }
 
   componentWillFocus() {
-    this.updateCollection2();
+    this.updateArtists2();
     console.log("focus");
   }
-  updateCollection2() {
-    let collectionList = [];
+  updateArtists2() {
+    let artistList = [];
     let object = {};
     this.setState({ loading: true });
-    console.log(this.props.route.params.context.collection());
-    this.props.route.params.context.collection().then((querySnapshot) => {
+    console.log(this.props.route.params.context.artists());
+    this.props.route.params.context.artists().then((querySnapshot) => {
       querySnapshot.forEach(function (doc) {
         object = doc.data();
         object.id = doc.id;
-        collectionList.push(object);
+        artistList.push(object);
       });
-      this.setState({ collectionList });
+      this.setState({ artistList });
       this.setState({ loading: false });
     });
   }
 
-  updateCollection(item) {
-    this.props.route.params.context.removeCollection(item);
-    let collectionList = [];
+  updateArtists(item) {
+    this.props.route.params.context.removeArtist(item);
+    let artistList = [];
     let object = {};
     this.setState({ loading: true });
-    console.log(this.props.route.params.context.collection());
-    this.props.route.params.context.collection().then((querySnapshot) => {
+    console.log(this.props.route.params.context.artists());
+    this.props.route.params.context.artists().then((querySnapshot) => {
       querySnapshot.forEach(function (doc) {
         object = doc.data();
         object.id = doc.id;
         if (object.id != item.id) {
-          collectionList.push(object);
+          artistList.push(object);
         }
       });
-      this.setState({ collectionList });
+      this.setState({ artistList });
       this.setState({ loading: false });
     });
   }
   componentDidMount() {
-    let collectionList = [];
+    let artistList = [];
     let object = {};
     this.setState({ loading: true });
-    console.log(this.props.route.params.context.collection());
-    this.props.route.params.context.collection().then((querySnapshot) => {
+    console.log(this.props.route.params.context.artists());
+    this.props.route.params.context.artists().then((querySnapshot) => {
       querySnapshot.forEach(function (doc) {
         object = doc.data();
         object.id = doc.id;
-        collectionList.push(object);
+        artistList.push(object);
       });
-      this.setState({ collectionList });
+      this.setState({ artistList });
       this.setState({ loading: false });
     });
   }
 
   render() {
-    const { collectionList } = this.state;
+    const { artistList } = this.state;
     return (
       <SafeAreaView style={styles.safeView}>
         <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -94,26 +92,24 @@ class MyCollection extends React.Component {
         >
           <HeaderBar
             backgroundColor="#0D0D0D"
-            title="My Collection"
+            title="My Artists"
             screenProps={this.props}
             addOnPress={() =>
-              this.props.navigation.navigate("AddCollection", {
-                collectionList,
+              this.props.navigation.navigate("AddArtist", {
+                artistList,
               })
             }
           />
           <View style={styles.container}>
             <FlatList
-              data={collectionList}
+              data={artistList}
               renderItem={({ item }) => (
                 <View style={styles.container}>
-                  <Text style={styles.item}>
-                    {item.title} by {item.artist}
-                  </Text>
+                  <Text style={styles.item}>{item.name}</Text>
                   <View style={styles.form}>
                     <FormButton
                       onPress={() => {
-                        this.updateCollection(item);
+                        this.updateArtists(item);
                       }}
                       buttonTitle="Remove"
                     />
@@ -128,7 +124,7 @@ class MyCollection extends React.Component {
   }
 }
 
-export default MyCollection;
+export default MyArtists;
 
 const styles = StyleSheet.create({
   backgroundImage: {
