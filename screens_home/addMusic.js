@@ -1,18 +1,14 @@
 import React from "react";
 import {
-	FlatList,
 	ImageBackground,
 	StatusBar,
 	StyleSheet,
-	Text,
 	TextInput,
 	View,
-	TouchableOpacity,
 } from "react-native";
 import FormButton from "../components/FormButton";
 import HeaderBar from "../components/HeaderBar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const initial_state = {
 	title: "",
@@ -169,48 +165,7 @@ const styles = StyleSheet.create({
 		lineHeight: 19,
 	},
 
-	pageHeader: {
-		flexDirection: "row",
-		backgroundColor: "#F2F2F2",
-		borderRadius: 40,
-		borderColor: "#0D0D0D",
-		borderStyle: "solid",
-		borderWidth: 3,
-		height: 57,
-		width: 330,
-		justifyContent: "center",
-		alignItems: "center",
-		marginBottom: 20,
-	},
-
-	pageHeaderText: {
-		fontFamily: "Courier Prime Bold",
-		fontStyle: "normal",
-		fontWeight: "bold",
-		fontSize: 36,
-		lineHeight: 40,
-		color: "#358C7C",
-	},
-
 	safeView: {
 		flex: 1,
 	},
 });
-
-/*
-						<View style={styles.pageHeader}>
-							<TouchableOpacity
-								style={styles.crossmark}
-								onPress={() => {
-									this.props.navigation.navigate("MyMusic");
-								}}
-							>
-								<FontAwesome
-									name={"times"}
-									size={24}
-									color={"#0D0D0D"}
-								/>
-							</TouchableOpacity>
-							<Text style={styles.pageHeaderText}>Add Music</Text>
-            </View>
-            */

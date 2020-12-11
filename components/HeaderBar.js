@@ -20,7 +20,7 @@ const HeaderBar = ({ backgroundColor, title, screenProps, addOnPress }) => {
 				<FontAwesome
 					name={"plus"}
 					size={20}
-					color={addOnPress === null ? "#0D0D0D" : "#55D9C1"}
+					color={addOnPress === null ? backgroundColor : "#55D9C1"}
 				/>
 			</TouchableOpacity>
 		</View>
