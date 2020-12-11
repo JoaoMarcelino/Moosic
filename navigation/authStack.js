@@ -14,66 +14,66 @@ import AppBottomTab from "./appBottomTab";
 const Stack = createStackNavigator();
 
 const AuthStack = (context) => {
-  const Auth = <AuthScreen context={context} />;
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        cardStyleInterpolator: forFade,
-      }}
-      initialRouteName={"Authentication"}
-    >
-      <Stack.Screen
-        name="Authentication"
-        component={AuthScreen}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-      />
-      <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={context}
-      />
-      <Stack.Screen
-        name="Register"
-        component={SignupScreen}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={context}
-      />
-      <Stack.Screen
-        name="AppBottomTab"
-        component={AppBottomTab}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={context}
-      />
-    </Stack.Navigator>
-  );
+	const Auth = <AuthScreen context={context} />;
+	return (
+		<Stack.Navigator
+			screenOptions={{
+				headerShown: false,
+				cardStyleInterpolator: forFade,
+			}}
+			initialRouteName={"Authentication"}
+		>
+			<Stack.Screen
+				name="Authentication"
+				component={AuthScreen}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+			/>
+			<Stack.Screen
+				name="Login"
+				component={LoginScreen}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={context}
+			/>
+			<Stack.Screen
+				name="Register"
+				component={SignupScreen}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={context}
+			/>
+			<Stack.Screen
+				name="AppBottomTab"
+				component={AppBottomTab}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={context}
+			/>
+		</Stack.Navigator>
+	);
 };
 
 export default AuthStack;
 
 const forFade = ({ current }) => ({
-  cardStyle: {
-    opacity: current.progress,
-  },
+	cardStyle: {
+		opacity: current.progress,
+	},
 });
