@@ -20,16 +20,16 @@ class Settings extends React.Component {
 		return (
 			<SafeAreaView style={styles.safeView}>
 				<StatusBar backgroundColor="black" barStyle="light-content" />
-				<HeaderBar
-					backgroundColor="#0D0D0D"
-					title="Settings"
-					screenProps={this.props}
-					addOnPress={null}
-				/>
 				<ImageBackground
 					source={require("../assets/400x800.png")}
 					style={styles.backgroundImage}
 				>
+					<HeaderBar
+						backgroundColor="#0D0D0D"
+						title="Settings"
+						screenProps={this.props}
+						addOnPress={null}
+					/>
 					<View style={styles.container}>
 						<SocialButton
 							onPress={() => {
