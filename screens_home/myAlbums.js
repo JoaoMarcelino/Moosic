@@ -10,6 +10,7 @@ import {
 import FormButton from "../components/FormButton";
 import HeaderBar from "../components/HeaderBar";
 import { SafeAreaView } from "react-native-safe-area-context";
+import PersonalItem from "../components/PersonalItem";
 
 const initial_state = {
 	title: "",
@@ -109,19 +110,18 @@ class MyAlbums extends React.Component {
 						<FlatList
 							data={albumList}
 							renderItem={({ item }) => (
-								<View style={styles.container}>
-									<Text style={styles.item}>
-										{item.title} by {item.artist}
-									</Text>
-									<View style={styles.form}>
-										<FormButton
-											onPress={() => {
-												this.updateMusic(item);
-											}}
-											buttonTitle="Remove"
-										/>
-									</View>
-								</View>
+								<PersonalItem
+									upperText={item.title}
+									bottomText={item.artist}
+									onPress={() =>
+										this.props.navigation.navigate(
+											"ViewMusic",
+											{
+												item,
+											}
+										)
+									}
+								/>
 							)}
 						/>
 					</View>
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
 	},
 
 	container: {
+		paddingTop: 25,
 		flex: 1,
 		alignItems: "center",
 	},
