@@ -5,6 +5,7 @@ import {
   StatusBar,
   StyleSheet,
   View,
+  TouchableOpacity,
 } from "react-native";
 import MusicItem from "../components/MusicItem";
 import HeaderBar from "../components/HeaderBar";
@@ -116,7 +117,16 @@ class MyMusic extends React.Component {
           <View style={styles.container}>
             <FlatList
               data={musicList}
-              renderItem={({ item }) => <MusicItem item={item} />}
+              renderItem={({ item }) => (
+                <MusicItem
+                  item={item}
+                  onPress={() =>
+                    this.props.navigation.navigate("ViewMusic", {
+                      item,
+                    })
+                  }
+                />
+              )}
             />
           </View>
         </ImageBackground>
