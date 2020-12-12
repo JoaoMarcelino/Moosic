@@ -87,6 +87,15 @@ class MyMusic extends React.Component {
 		});
 	}
 
+
+	/*
+		ADICIONAR DENTRO DA FLAT LIST
+		addOnPress={() =>
+							this.props.navigation.navigate("ViewMusic", {
+								item,
+							})
+						}
+	*/
 	render() {
 		const { musicList } = this.state;
 		return (
@@ -107,7 +116,8 @@ class MyMusic extends React.Component {
 						}
 					/>
 					<View style={styles.container}>
-						<FlatList
+						
+						<FlatList 
 							data={musicList}
 							extraData={musicList}
 							renderItem={({ item }) => (

@@ -124,6 +124,31 @@ const VaultStack = (context) => {
         }}
         initialParams={context.route.params}
       />
+      
+      <Stack.Screen
+        name="ViewMusic"
+        component={viewMusic}
+        options={{
+          title: "Music",
+          cardStyle: {
+            backgroundColor: "black",
+          },
+        }}
+        initialParams={context.route.params}
+      />
+
+      <Stack.Screen
+        name="ViewAlbum"
+        component={viewMusic}
+        options={{
+          title: "Album",
+          cardStyle: {
+            backgroundColor: "black",
+          },
+        }}
+        initialParams={context.route.params}
+      />
+
     </Stack.Navigator>
   );
 };
