@@ -15,6 +15,7 @@ const initial_state = {
   artist: "",
   album: "",
   year: "",
+  listened: false,
   loading: false,
   musicList: null,
 };
@@ -45,8 +46,8 @@ class AddMusic extends React.Component {
 
   addMusic = () => {
     //console.log(this.props.route.params.context);
-    const { title, artist, album } = this.state;
-    let obj = { title, artist, album };
+    const { title, artist, album, year, listened } = this.state;
+    let obj = { title, artist, album, year, listened };
     this.props.route.params.context.addMusic(obj);
     this.props.navigation.navigate("MyMusic");
   };

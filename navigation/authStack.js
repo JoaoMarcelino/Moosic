@@ -13,8 +13,8 @@ import AppBottomTab from "./appBottomTab";
 
 const Stack = createStackNavigator();
 
-const AuthStack = (context) => {
-	const Auth = <AuthScreen context={context} />;
+const AuthStack = (navigation) => {
+	const Auth = <AuthScreen navigation={navigation} />;
 	return (
 		<Stack.Navigator
 			screenOptions={{
@@ -42,7 +42,7 @@ const AuthStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context}
+				initialParams={navigation}
 			/>
 			<Stack.Screen
 				name="Register"
@@ -53,7 +53,7 @@ const AuthStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context}
+				initialParams={navigation}
 			/>
 			<Stack.Screen
 				name="AppBottomTab"
@@ -64,7 +64,7 @@ const AuthStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context}
+				initialParams={navigation}
 			/>
 		</Stack.Navigator>
 	);

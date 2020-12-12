@@ -8,8 +8,8 @@ import SettingsStack from "../navigation/settingsStack";
 
 const Stack = createStackNavigator();
 
-const ProfileStack = (context) => {
-	const ProfileC = <Profile context={context} />;
+const ProfileStack = (navigation) => {
+	const ProfileC = <Profile navigation={navigation} />;
 	return (
 		<Stack.Navigator
 			screenOptions={{
@@ -27,7 +27,7 @@ const ProfileStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context.route.params}
+				initialParams={navigation.route.params}
 			/>
 			<Stack.Screen
 				name="SettingsStack"
@@ -38,7 +38,7 @@ const ProfileStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context.route.params}
+				initialParams={navigation.route.params}
 			/>
 		</Stack.Navigator>
 	);

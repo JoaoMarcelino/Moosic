@@ -7,7 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import ProfileStack from "../navigation/profileStack";
 const Tab = createMaterialTopTabNavigator();
 
-const AppBottomTab = (context) => {
+const AppBottomTab = (navigation) => {
   return (
     <Tab.Navigator
       tabBarPosition="bottom"
@@ -41,7 +41,7 @@ const AppBottomTab = (context) => {
       <Tab.Screen
         name="Search"
         component={Search}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
         options={{
           tabBarIcon: ({ color }) => (
             <Icon size={20} color={color} name={"search"} />
@@ -51,7 +51,7 @@ const AppBottomTab = (context) => {
       <Tab.Screen
         name="Vault"
         component={VaultStack}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
         options={{
           tabBarIcon: ({ color }) => (
             <Icon size={20} color={color} name={"headphones"} />
@@ -61,7 +61,7 @@ const AppBottomTab = (context) => {
       <Tab.Screen
         name="Profile"
         component={ProfileStack}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
         options={{
           tabBarIcon: ({ color }) => (
             <Icon size={20} color={color} name={"user"} />
