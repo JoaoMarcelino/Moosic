@@ -12,6 +12,9 @@ import MyCollection from "../screens_home/myCollection";
 import AddArtist from "../screens_home/addArtist";
 import MyArtists from "../screens_home/myArtists";
 import AddCollection from "../screens_home/addCollection";
+import ViewMusic from "../screens_home/viewMusic";
+import ViewAlbum from "../screens_home/viewAlbum";
+
 const Stack = createStackNavigator();
 
 const VaultStack = (context) => {
@@ -124,10 +127,10 @@ const VaultStack = (context) => {
         }}
         initialParams={context.route.params}
       />
-      
+
       <Stack.Screen
         name="ViewMusic"
-        component={viewMusic}
+        component={ViewMusic}
         options={{
           title: "Music",
           cardStyle: {
@@ -139,7 +142,7 @@ const VaultStack = (context) => {
 
       <Stack.Screen
         name="ViewAlbum"
-        component={viewMusic}
+        component={ViewAlbum}
         options={{
           title: "Album",
           cardStyle: {
@@ -148,7 +151,6 @@ const VaultStack = (context) => {
         }}
         initialParams={context.route.params}
       />
-
     </Stack.Navigator>
   );
 };

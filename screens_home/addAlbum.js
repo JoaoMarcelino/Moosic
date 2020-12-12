@@ -18,6 +18,7 @@ const initial_state = {
   title: "",
   artist: "",
   year: "",
+  listened: 0.0,
   loading: false,
   albumList: null,
 };
@@ -48,8 +49,8 @@ class AddAlbum extends React.Component {
 
   addAlbum = () => {
     //console.log(this.props.route.params.context);
-    const { title, artist, year } = this.state;
-    let obj = { title, artist, year };
+    const { title, artist, year, listened } = this.state;
+    let obj = { title, artist, year, listened };
     this.props.route.params.context.addAlbum(obj);
     this.props.navigation.navigate("MyAlbums");
   };
