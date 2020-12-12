@@ -111,7 +111,7 @@ class MyAlbums extends React.Component {
                   upperText={item.title}
                   bottomText={item.artist}
                   onPress={() =>
-                    this.props.navigation.navigate("ViewMusic", {
+                    this.props.navigation.navigate("ViewAlbum", {
                       item,
                     })
                   }
