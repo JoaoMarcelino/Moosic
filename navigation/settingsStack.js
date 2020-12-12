@@ -9,8 +9,8 @@ import ChangePassword from "../screens_home/changePassword";
 import Credits from "../screens_home/credits";
 const Stack = createStackNavigator();
 
-const SettingsStack = (context) => {
-	const SettingsC = <Settings context={context} />;
+const SettingsStack = (navigation) => {
+	const SettingsC = <Settings navigation={navigation} />;
 	return (
 		<Stack.Navigator
 			screenOptions={{
@@ -28,7 +28,7 @@ const SettingsStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context.route.params}
+				initialParams={navigation.route.params}
 			/>
 			<Stack.Screen
 				name="ChangeProfileName"
@@ -39,7 +39,7 @@ const SettingsStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context.route.params}
+				initialParams={navigation.route.params}
 			/>
 			<Stack.Screen
 				name="ChangePassword"
@@ -50,7 +50,7 @@ const SettingsStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context.route.params}
+				initialParams={navigation.route.params}
 			/>
 			<Stack.Screen
 				name="Credits"
@@ -61,7 +61,7 @@ const SettingsStack = (context) => {
 						backgroundColor: "black",
 					},
 				}}
-				initialParams={context.route.params}
+				initialParams={navigation.route.params}
 			/>
 		</Stack.Navigator>
 	);

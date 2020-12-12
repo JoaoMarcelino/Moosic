@@ -12,10 +12,11 @@ import MyCollection from "../screens_home/myCollection";
 import AddArtist from "../screens_home/addArtist";
 import MyArtists from "../screens_home/myArtists";
 import AddCollection from "../screens_home/addCollection";
+import ViewArtist from "../screens_home/viewArtist";
 const Stack = createStackNavigator();
 
-const VaultStack = (context) => {
-  const VaultC = <Vault context={context} />;
+const VaultStack = (navigation) => {
+  const VaultC = <Vault navigation={navigation} />;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -34,7 +35,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="AddMusic"
@@ -45,7 +46,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="AddAlbum"
@@ -56,7 +57,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="AddArtist"
@@ -67,7 +68,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="AddCollection"
@@ -78,7 +79,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="MyAlbums"
@@ -89,7 +90,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="MyMusic"
@@ -100,7 +101,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="MyArtists"
@@ -111,7 +112,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       <Stack.Screen
         name="MyCollection"
@@ -122,7 +123,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
       
       <Stack.Screen
@@ -134,7 +135,7 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
       />
 
       <Stack.Screen
@@ -146,7 +147,19 @@ const VaultStack = (context) => {
             backgroundColor: "black",
           },
         }}
-        initialParams={context.route.params}
+        initialParams={navigation.route.params}
+      />
+
+      <Stack.Screen
+        name="ViewArtist"
+        component={ViewArtist}
+        options={{
+          title: "Artist",
+          cardStyle: {
+            backgroundColor: "pink",
+          },
+        }}
+        initialParams={navigation.route.params}
       />
 
     </Stack.Navigator>
