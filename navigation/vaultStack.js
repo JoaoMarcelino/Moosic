@@ -134,7 +134,7 @@ const VaultStack = (context) => {
         options={{
           title: "Music",
           cardStyle: {
-            backgroundColor: "black",
+            backgroundColor: "pink",
           },
         }}
         initialParams={context.route.params}
@@ -146,7 +146,7 @@ const VaultStack = (context) => {
         options={{
           title: "Album",
           cardStyle: {
-            backgroundColor: "black",
+            backgroundColor: "pink",
           },
         }}
         initialParams={context.route.params}
