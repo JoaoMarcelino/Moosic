@@ -14,12 +14,12 @@ import { functions } from "firebase";
 
 const ViewMusic = (nav) => {
   let item = nav.route.params.item;
-  console.log(item);
   return (
     <View style={styles.container}>
       <Text>Title: {item.title}</Text>
       <Text>Artist: {item.artist}</Text>
       <Text>Album: {item.album}</Text>
+      <Text>Listened: {"" + item.listened}</Text>
     </View>
   );
 };
