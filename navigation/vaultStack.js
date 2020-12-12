@@ -12,7 +12,10 @@ import MyCollection from "../screens_home/myCollection";
 import AddArtist from "../screens_home/addArtist";
 import MyArtists from "../screens_home/myArtists";
 import AddCollection from "../screens_home/addCollection";
+import ViewMusic from "../screens_home/viewMusic";
+import ViewAlbum from "../screens_home/viewAlbum";
 import ViewArtist from "../screens_home/viewArtist";
+
 const Stack = createStackNavigator();
 
 const VaultStack = (navigation) => {
@@ -125,14 +128,14 @@ const VaultStack = (navigation) => {
         }}
         initialParams={navigation.route.params}
       />
-      
+
       <Stack.Screen
         name="ViewMusic"
-        component={viewMusic}
+        component={ViewMusic}
         options={{
           title: "Music",
           cardStyle: {
-            backgroundColor: "black",
+            backgroundColor: "pink",
           },
         }}
         initialParams={navigation.route.params}
@@ -140,11 +143,11 @@ const VaultStack = (navigation) => {
 
       <Stack.Screen
         name="ViewAlbum"
-        component={viewMusic}
+        component={ViewAlbum}
         options={{
           title: "Album",
           cardStyle: {
-            backgroundColor: "black",
+            backgroundColor: "pink",
           },
         }}
         initialParams={navigation.route.params}
@@ -161,7 +164,6 @@ const VaultStack = (navigation) => {
         }}
         initialParams={navigation.route.params}
       />
-
     </Stack.Navigator>
   );
 };
