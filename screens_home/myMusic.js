@@ -5,7 +5,6 @@ import {
 	StatusBar,
 	StyleSheet,
 	View,
-	TouchableOpacity,
 } from "react-native";
 import PersonalItem from "../components/PersonalItem";
 import HeaderBar from "../components/HeaderBar";
