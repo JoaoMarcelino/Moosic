@@ -4,10 +4,9 @@ import {
 	ImageBackground,
 	StatusBar,
 	StyleSheet,
-	Text,
 	View,
 } from "react-native";
-import FormButton from "../components/FormButton";
+import MusicItem from "../components/MusicItem";
 import HeaderBar from "../components/HeaderBar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -80,7 +79,7 @@ class MyMusic extends React.Component {
 			querySnapshot.forEach(function (doc) {
 				object = doc.data();
 				object.id = doc.id;
-				musicList.push(object);
+				musicList.append(object);
 			});
 			this.setState({ musicList });
 			this.setState({ loading: false });
@@ -109,22 +108,7 @@ class MyMusic extends React.Component {
 					<View style={styles.container}>
 						<FlatList
 							data={musicList}
-							extraData={musicList}
-							renderItem={({ item }) => (
-								<View style={styles.container}>
-									<Text style={styles.item}>
-										{item.title} by {item.artist}
-									</Text>
-									<View style={styles.form}>
-										<FormButton
-											onPress={() => {
-												this.updateMusic(item);
-											}}
-											buttonTitle="Remove"
-										/>
-									</View>
-								</View>
-							)}
+							renderItem={({ item }) => <MusicItem item={item} />}
 						/>
 					</View>
 				</ImageBackground>
