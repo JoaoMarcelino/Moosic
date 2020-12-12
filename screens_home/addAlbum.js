@@ -18,6 +18,7 @@ const initial_state = {
   title: "",
   artist: "",
   year: "",
+  numberTracks: 0,
   listened: 0.0,
   loading: false,
   albumList: null,
@@ -49,8 +50,8 @@ class AddAlbum extends React.Component {
 
   addAlbum = () => {
     //console.log(this.props.route.params.context);
-    const { title, artist, year, listened } = this.state;
-    let obj = { title, artist, year, listened };
+    const { title, artist, year, numberTracks, listened } = this.state;
+    let obj = { title, artist, year, numberTracks, listened };
     this.props.route.params.context.addAlbum(obj);
     this.props.navigation.navigate("MyAlbums");
   };
@@ -60,7 +61,7 @@ class AddAlbum extends React.Component {
   };
 
   render() {
-    const { title, artist, year, albumList } = this.state;
+    const { title, artist, year, numberTracks, albumList } = this.state;
     return (
       <SafeAreaView style={styles.safeView}>
         <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -104,6 +105,15 @@ class AddAlbum extends React.Component {
                 defaultValue={year}
               />
 
+              <TextInput
+                name="Number of tracks"
+                style={styles.inputForm}
+                placeholder="Number of tracks"
+                placeholderTextColor="#0D0D0D"
+                onChangeText={(text) => (this.state.numberTracks = text)}
+                defaultValue={numberTracks}
+              />
+
               <FormButton
                 onPress={() => {
                   if (this.state.title != "" && this.state.artist != "") {
@@ -143,7 +153,7 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    flex: 1,
+    flex: 1.5,
     alignItems: "center",
     justifyContent: "space-evenly",
   },
