@@ -65,6 +65,18 @@ export class AppProvider extends React.Component {
       });
   };
 
+  setListened = (itemObj) => {
+    const uid = this.auth.currentUser.uid;
+    console.log(itemObj);
+    this.db
+      .collection("User")
+      .doc(uid)
+      .collection("Album")
+      .doc(itemObj.id)
+      .set(itemObj)
+      console.log("Listened!");
+  }
+
   musics = () => {
     const uid = this.auth.currentUser.uid;
     return this.db.collection("User").doc(uid).collection("Music").get();
@@ -182,6 +194,7 @@ export class AppProvider extends React.Component {
           albums: this.albums,
           addAlbum: this.addAlbum,
           removeAlbum: this.removeAlbum,
+          setListened: this.setListened,
 
           artists: this.artists,
           addArtist: this.addArtist,

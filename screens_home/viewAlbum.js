@@ -12,8 +12,20 @@ import HeaderBar from "../components/HeaderBar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { functions } from "firebase";
 
-const ViewAlbum = (nav) => {
-  let item = nav.route.params.item;
+import * as Progress from 'react-native-progress';
+
+import {Surface, Shape} from '@react-native-community/art';
+
+
+class ViewAlbum extends React.Component{
+  constructor(props){
+    super(props);
+
+  }
+
+  render(){
+    let item = this.props.route.params.item;
+  let context = this.props.route.params.context;
   return (
     <View style={styles.container}>
       <Text>Title: {item.title}</Text>
@@ -21,9 +33,34 @@ const ViewAlbum = (nav) => {
       <Text>Year: {item.year}</Text>
       <Text>Number of Tracks: {item.numberTracks}</Text>
       <Text>Progress: {item.listened}</Text>
+      <Progress.Bar 
+        progress={item.listened/item.numberTracks} 
+        width={200}
+        borderColor= "black"
+        color = "green"
+      />
+      <FormButton
+        onPress={() => {
+          item.listened+=item.listened;
+          context.setListened(item);
+        }}
+        buttonTitle="Plus"
+      />
+      <FormButton
+        onPress={() => {
+          item.listened--;
+          context.setListened(item);
+
+        }}
+        buttonTitle="Minus"
+      />
+      
     </View>
   );
-};
+  }
+}
+
+
 
 export default ViewAlbum;
 
