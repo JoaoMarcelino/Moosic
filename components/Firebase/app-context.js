@@ -67,14 +67,13 @@ export class AppProvider extends React.Component {
 
   setListened = (itemObj) => {
     const uid = this.auth.currentUser.uid;
-    console.log(itemObj);
     this.db
       .collection("User")
       .doc(uid)
       .collection("Album")
       .doc(itemObj.id)
       .set(itemObj)
-      console.log("Listened!");
+
     return itemObj;
   }
 

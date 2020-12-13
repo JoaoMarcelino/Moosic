@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from "react-native";
 import FormButton from "../components/FormButton";
 import HeaderBar from "../components/HeaderBar";
@@ -13,8 +14,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { functions } from "firebase";
 
 import * as Progress from 'react-native-progress';
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-import {Surface, Shape} from '@react-native-community/art';
 
 
 class ViewAlbum extends React.Component{
@@ -36,31 +37,33 @@ class ViewAlbum extends React.Component{
       <Progress.Bar 
         progress={item.listened/item.numberTracks} 
         width={200}
-        borderColor= "black"
-        color = "green"
+        borderColor= {"#0D0D0D"}
+        color={"#55D9C1"}
       />
-      <FormButton
-        onPress={() => {
+
+      <TouchableOpacity
+				style={{ padding: 25 }}
+				onPress={() => {
           if (item.listened < item.numberTracks){
             item.listened ++;
             this.setState(context.setListened(item));
-          }else{
-            console.log("WTF");
           }
-          
         }}
-        buttonTitle="Plus"
-      />
-      <FormButton
-        onPress={() => {
+			>
+				<FontAwesome name={"plus"} size={20} color={"#55D9C1"} />
+			</TouchableOpacity>
+
+      <TouchableOpacity
+				style={{ padding: 25 }}
+				onPress={() => {
           if(item.listened>0){
             item.listened--;
             this.setState(context.setListened(item));
           }
-          
         }}
-        buttonTitle="Minus"
-      />
+			>
+				<FontAwesome name={"minus"} size={20} color={"#55D9C1"} />
+			</TouchableOpacity>
       
     </View>
   );
