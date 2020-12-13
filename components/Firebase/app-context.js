@@ -3,8 +3,8 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 
 const initialState = {
-  user: null,
-  personData: {},
+    user: null,
+    personData: {},
 };
 
 const AppContext = React.createContext();
@@ -12,201 +12,219 @@ const AppContext = React.createContext();
 export const AppConsumer = AppContext.Consumer;
 
 export class AppProvider extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = initialState;
+    constructor(props) {
+        super(props);
+        this.state = initialState;
 
-    this.auth = firebase.auth();
-    this.db = firebase.firestore();
-  }
+        this.auth = firebase.auth();
+        this.db = firebase.firestore();
+    }
 
-  // *** Auth API ***
+    // *** Auth API ***
 
-  doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+    doCreateUserWithEmailAndPassword = (email, password) =>
+        this.auth.createUserWithEmailAndPassword(email, password);
 
-  doSignInWithEmailAndPassword = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+    doSignInWithEmailAndPassword = (email, password) =>
+        this.auth.signInWithEmailAndPassword(email, password);
 
-  doSignOut = () => this.auth.signOut();
+    doSignOut = () => this.auth.signOut();
 
-  // *** User API ***
+    // *** User API ***
 
-  albums = () => {
-    const uid = this.auth.currentUser.uid;
-    return this.db.collection("User").doc(uid).collection("Album").get();
-  };
+    albums = () => {
+        const uid = this.auth.currentUser.uid;
+        return this.db.collection("User").doc(uid).collection("Album").get();
+    };
 
-  addAlbum = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Album")
-      .add(itemObj)
-      .catch((err) => alert(err));
-  };
+    addAlbum = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Album")
+            .add(itemObj)
+            .catch((err) => alert(err));
+    };
 
-  removeAlbum = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    console.log(itemObj);
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Album")
-      .doc(itemObj.id)
-      .delete()
-      .then(function () {
-        console.log("Document successfully deleted!");
-        //window.location.reload(false);
-      })
-      .catch(function (error) {
-        console.error("Error removing document: ", error);
-      });
-  };
+    removeAlbum = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        console.log(itemObj);
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Album")
+            .doc(itemObj.id)
+            .delete()
+            .then(function () {
+                console.log("Document successfully deleted!");
+                //window.location.reload(false);
+            })
+            .catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+    };
 
-  setListened = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Album")
-      .doc(itemObj.id)
-      .set(itemObj)
+    setListenedAlbum = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Album")
+            .doc(itemObj.id)
+            .set(itemObj);
 
-    return itemObj;
-  }
+        return itemObj;
+    };
 
-  musics = () => {
-    const uid = this.auth.currentUser.uid;
-    return this.db.collection("User").doc(uid).collection("Music").get();
-  };
+    setListenedMusic = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Music")
+            .doc(itemObj.id)
+            .set(itemObj);
 
-  addMusic = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Music")
-      .add(itemObj)
-      .catch((err) => alert(err));
-  };
+        return itemObj;
+    };
 
-  removeMusic = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    console.log(itemObj);
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Music")
-      .doc(itemObj.id)
-      .delete()
-      .then(function () {
-        console.log("Document successfully deleted!");
-        //window.location.reload(false);
-      })
-      .catch(function (error) {
-        console.error("Error removing document: ", error);
-      });
-  };
+    musics = () => {
+        const uid = this.auth.currentUser.uid;
+        return this.db.collection("User").doc(uid).collection("Music").get();
+    };
 
-  artists = () => {
-    const uid = this.auth.currentUser.uid;
-    return this.db.collection("User").doc(uid).collection("Artist").get();
-  };
+    addMusic = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Music")
+            .add(itemObj)
+            .catch((err) => alert(err));
+    };
 
-  addArtist = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Artist")
-      .add(itemObj)
-      .catch((err) => alert(err));
-  };
+    removeMusic = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        console.log(itemObj);
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Music")
+            .doc(itemObj.id)
+            .delete()
+            .then(function () {
+                console.log("Document successfully deleted!");
+                //window.location.reload(false);
+            })
+            .catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+    };
 
-  removeArtist = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    console.log(itemObj);
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Artist")
-      .doc(itemObj.id)
-      .delete()
-      .then(function () {
-        console.log("Document successfully deleted!");
-        //window.location.reload(false);
-      })
-      .catch(function (error) {
-        console.error("Error removing document: ", error);
-      });
-  };
+    artists = () => {
+        const uid = this.auth.currentUser.uid;
+        return this.db.collection("User").doc(uid).collection("Artist").get();
+    };
 
-  collection = () => {
-    const uid = this.auth.currentUser.uid;
-    return this.db.collection("User").doc(uid).collection("Collection").get();
-  };
+    addArtist = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Artist")
+            .add(itemObj)
+            .catch((err) => alert(err));
+    };
 
-  addCollection = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Collection")
-      .add(itemObj)
-      .catch((err) => alert(err));
-  };
+    removeArtist = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        console.log(itemObj);
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Artist")
+            .doc(itemObj.id)
+            .delete()
+            .then(function () {
+                console.log("Document successfully deleted!");
+                //window.location.reload(false);
+            })
+            .catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+    };
 
-  removeCollection = (itemObj) => {
-    const uid = this.auth.currentUser.uid;
-    console.log(itemObj);
-    this.db
-      .collection("User")
-      .doc(uid)
-      .collection("Collection")
-      .doc(itemObj.id)
-      .delete()
-      .then(function () {
-        console.log("Document successfully deleted!");
-        //window.location.reload(false);
-      })
-      .catch(function (error) {
-        console.error("Error removing document: ", error);
-      });
-  };
+    collection = () => {
+        const uid = this.auth.currentUser.uid;
+        return this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Collection")
+            .get();
+    };
 
-  render() {
-    return (
-      <AppContext.Provider
-        value={{
-          personData: this.state.personData,
-          auth: this.auth,
-          doCreateUserWithEmailAndPassword: this
-            .doCreateUserWithEmailAndPassword,
-          doSignInWithEmailAndPassword: this.doSignInWithEmailAndPassword,
-          doSignOut: this.doSignOut,
+    addCollection = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Collection")
+            .add(itemObj)
+            .catch((err) => alert(err));
+    };
 
-          musics: this.musics,
-          addMusic: this.addMusic,
-          removeMusic: this.removeMusic,
+    removeCollection = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        console.log(itemObj);
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Collection")
+            .doc(itemObj.id)
+            .delete()
+            .then(function () {
+                console.log("Document successfully deleted!");
+                //window.location.reload(false);
+            })
+            .catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+    };
 
-          albums: this.albums,
-          addAlbum: this.addAlbum,
-          removeAlbum: this.removeAlbum,
-          setListened: this.setListened,
+    render() {
+        return (
+            <AppContext.Provider
+                value={{
+                    personData: this.state.personData,
+                    auth: this.auth,
+                    doCreateUserWithEmailAndPassword: this
+                        .doCreateUserWithEmailAndPassword,
+                    doSignInWithEmailAndPassword: this
+                        .doSignInWithEmailAndPassword,
+                    doSignOut: this.doSignOut,
 
-          artists: this.artists,
-          addArtist: this.addArtist,
-          removeArtist: this.removeArtist,
+                    musics: this.musics,
+                    addMusic: this.addMusic,
+                    removeMusic: this.removeMusic,
+                    setListenedMusic: this.setListenedMusic,
 
-          collection: this.collection,
-          addCollection: this.addCollection,
-          removeCollection: this.removeCollection,
-        }}
-      >
-        {this.props.children}
-      </AppContext.Provider>
-    );
-  }
+                    albums: this.albums,
+                    addAlbum: this.addAlbum,
+                    removeAlbum: this.removeAlbum,
+                    setListenedAlbum: this.setListenedAlbum,
+
+                    artists: this.artists,
+                    addArtist: this.addArtist,
+                    removeArtist: this.removeArtist,
+
+                    collection: this.collection,
+                    addCollection: this.addCollection,
+                    removeCollection: this.removeCollection,
+                }}
+            >
+                {this.props.children}
+            </AppContext.Provider>
+        );
+    }
 }
