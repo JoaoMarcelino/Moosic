@@ -7,6 +7,7 @@ import {
 	Text,
 	View,
 } from "react-native";
+import FormButton from "../components/FormButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const initialState = {
@@ -21,34 +22,6 @@ class HomeView extends React.Component {
 	}
 
 	render() {
-		this.newReleases = [
-			"Devin",
-			"Dan",
-			"Dominic",
-			"Devin",
-			"Dan",
-			"Dominic",
-			"Devin",
-			"Dan",
-			"Dominic",
-		];
-		this.notFinished = [
-			"Jackson",
-			"James",
-			"Jillian",
-			"Jimmy",
-			"Joel",
-			"John",
-			"Julie",
-		];
-		this.notStarted = [
-			"Kevin",
-			"Kennedy",
-			"KKK",
-			"Kevin",
-			"Kennedy",
-			"KKK",
-		];
 
 		return (
 			<SafeAreaView style={styles.safeView}>
@@ -58,27 +31,13 @@ class HomeView extends React.Component {
 					style={styles.backgroundImage}
 				>
 					<View style={styles.container}>
-						<SectionList
-							sections={[
-								{
-									title: "New Releases",
-									data: this.newReleases.splice(0, 5),
-								},
-								{
-									title: "Not Finished Yet",
-									data: this.notFinished.splice(0, 5),
-								},
-								{
-									title: "Not Started",
-									data: this.notStarted.splice(0, 5),
-								},
-							]}
-							renderItem={({ item }) => <Text>{item}</Text>}
-							renderSectionHeader={({ section }) => (
-								<Text>{section.title}</Text>
-							)}
-							keyExtractor={(item, index) => index}
-						/>
+						<Text>Coming Soon!</Text>
+						<FormButton
+							onPress={() => {
+								this.props.navigation.navigate("Vault");
+							}}
+							buttonTitle="Vault"
+							/>
 						<StatusBar style="auto" />
 					</View>
 				</ImageBackground>
