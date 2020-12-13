@@ -75,6 +75,7 @@ export class AppProvider extends React.Component {
       .doc(itemObj.id)
       .set(itemObj)
       console.log("Listened!");
+    return itemObj;
   }
 
   musics = () => {

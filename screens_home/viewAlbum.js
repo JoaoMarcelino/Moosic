@@ -20,11 +20,11 @@ import {Surface, Shape} from '@react-native-community/art';
 class ViewAlbum extends React.Component{
   constructor(props){
     super(props);
-
+    this.state = {...props.route.params.item}
   }
 
   render(){
-    let item = this.props.route.params.item;
+  let item = this.state;
   let context = this.props.route.params.context;
   return (
     <View style={styles.container}>
@@ -41,16 +41,23 @@ class ViewAlbum extends React.Component{
       />
       <FormButton
         onPress={() => {
-          item.listened+=item.listened;
-          context.setListened(item);
+          if (item.listened < item.numberTracks){
+            item.listened ++;
+            this.setState(context.setListened(item));
+          }else{
+            console.log("WTF");
+          }
+          
         }}
         buttonTitle="Plus"
       />
       <FormButton
         onPress={() => {
-          item.listened--;
-          context.setListened(item);
-
+          if(item.listened>0){
+            item.listened--;
+            this.setState(context.setListened(item));
+          }
+          
         }}
         buttonTitle="Minus"
       />
