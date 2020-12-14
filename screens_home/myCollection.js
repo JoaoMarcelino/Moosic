@@ -114,14 +114,16 @@ class MyCollection extends React.Component {
 								<PersonalItem
 									upperText={item.title}
 									bottomText={item.artist}
-									onPress={() =>
+									onPress={() => {
+										const delA = this.updateCollection;
 										this.props.navigation.navigate(
-											"ViewAlbum",
+											"ViewCollection",
 											{
 												item,
+												delA,
 											}
-										)
-									}
+										);
+									}}
 								/>
 							)}
 						/>

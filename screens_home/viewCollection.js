@@ -18,7 +18,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 const win = Dimensions.get("window");
 const ratio = win.width / 1440;
 
-class ViewAlbum extends React.Component {
+class ViewCollection extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = this.props.route.params.item;
@@ -140,7 +140,7 @@ class ViewAlbum extends React.Component {
 	}
 }
 
-export default ViewAlbum;
+export default ViewCollection;
 
 const styles = StyleSheet.create({
 	backgroundImage: {

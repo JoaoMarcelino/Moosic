@@ -112,14 +112,16 @@ class MyArtists extends React.Component {
 								<PersonalItem
 									upperText={item.name}
 									bottomText={null}
-									onPress={() =>
+									onPress={() => {
+										const delA = this.updateArtists;
 										this.props.navigation.navigate(
-											"ViewMusic",
+											"ViewArtist",
 											{
 												item,
+												delA,
 											}
-										)
-									}
+										);
+									}}
 								/>
 							)}
 						/>

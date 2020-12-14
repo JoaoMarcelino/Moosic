@@ -116,7 +116,6 @@ class MyAlbums extends React.Component {
 									bottomText={item.artist}
 									onPress={() => {
 										const delA = this.updateMusic;
-
 										this.props.navigation.navigate(
 											"ViewAlbum",
 											{

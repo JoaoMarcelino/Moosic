@@ -15,163 +15,175 @@ import AddCollection from "../screens_home/addCollection";
 import ViewMusic from "../screens_home/viewMusic";
 import ViewAlbum from "../screens_home/viewAlbum";
 import ViewArtist from "../screens_home/viewArtist";
-
+import ViewCollection from "../screens_home/viewCollection";
 const Stack = createStackNavigator();
 
 const VaultStack = (navigation) => {
-  const VaultC = <Vault navigation={navigation} />;
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
+	const VaultC = <Vault navigation={navigation} />;
+	return (
+		<Stack.Navigator
+			screenOptions={{
+				headerShown: false,
 
-        cardStyleInterpolator: forFade,
-      }}
-      initialRouteName={"Vault"}
-    >
-      <Stack.Screen
-        name="Vault"
-        component={Vault}
-        options={{
-          title: "Vault",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="AddMusic"
-        component={AddMusic}
-        options={{
-          title: "Add Music",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="AddAlbum"
-        component={AddAlbum}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="AddArtist"
-        component={AddArtist}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="AddCollection"
-        component={AddCollection}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="MyAlbums"
-        component={MyAlbums}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="MyMusic"
-        component={MyMusic}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="MyArtists"
-        component={MyArtists}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-      <Stack.Screen
-        name="MyCollection"
-        component={MyCollection}
-        options={{
-          title: "Welcome",
-          cardStyle: {
-            backgroundColor: "black",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
+				cardStyleInterpolator: forFade,
+			}}
+			initialRouteName={"Vault"}
+		>
+			<Stack.Screen
+				name="Vault"
+				component={Vault}
+				options={{
+					title: "Vault",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="AddMusic"
+				component={AddMusic}
+				options={{
+					title: "Add Music",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="AddAlbum"
+				component={AddAlbum}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="AddArtist"
+				component={AddArtist}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="AddCollection"
+				component={AddCollection}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="MyAlbums"
+				component={MyAlbums}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="MyMusic"
+				component={MyMusic}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="MyArtists"
+				component={MyArtists}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+			<Stack.Screen
+				name="MyCollection"
+				component={MyCollection}
+				options={{
+					title: "Welcome",
+					cardStyle: {
+						backgroundColor: "black",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
 
-      <Stack.Screen
-        name="ViewMusic"
-        component={ViewMusic}
-        options={{
-          title: "Music",
-          cardStyle: {
-            backgroundColor: "pink",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
+			<Stack.Screen
+				name="ViewMusic"
+				component={ViewMusic}
+				options={{
+					title: "Music",
+					cardStyle: {
+						backgroundColor: "pink",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
 
-      <Stack.Screen
-        name="ViewAlbum"
-        component={ViewAlbum}
-        options={{
-          title: "Album",
-          cardStyle: {
-            backgroundColor: "pink",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
+			<Stack.Screen
+				name="ViewAlbum"
+				component={ViewAlbum}
+				options={{
+					title: "Album",
+					cardStyle: {
+						backgroundColor: "pink",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
 
-      <Stack.Screen
-        name="ViewArtist"
-        component={ViewArtist}
-        options={{
-          title: "Artist",
-          cardStyle: {
-            backgroundColor: "pink",
-          },
-        }}
-        initialParams={navigation.route.params}
-      />
-    </Stack.Navigator>
-  );
+			<Stack.Screen
+				name="ViewArtist"
+				component={ViewArtist}
+				options={{
+					title: "Artist",
+					cardStyle: {
+						backgroundColor: "pink",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+
+			<Stack.Screen
+				name="ViewCollection"
+				component={ViewCollection}
+				options={{
+					title: "Collection",
+					cardStyle: {
+						backgroundColor: "pink",
+					},
+				}}
+				initialParams={navigation.route.params}
+			/>
+		</Stack.Navigator>
+	);
 };
 
 export default VaultStack;
 
 const forFade = ({ current }) => ({
-  cardStyle: {
-    opacity: current.progress,
-  },
+	cardStyle: {
+		opacity: current.progress,
+	},
 });
