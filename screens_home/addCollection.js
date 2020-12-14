@@ -29,14 +29,14 @@ class AddCollection extends React.Component {
         super(props);
         this.state = { ...initial_state };
         this.context = this.props.route.params.context;
-        console.log("add collection", this.context);
+        //console.log("add collection", this.context);
     }
 
     componentDidMount() {
         let collectionList = [];
         let object = {};
         this.setState({ loading: true });
-        console.log(this.props.route.params.context.collection());
+        //console.log(this.props.route.params.context.collection());
         this.props.route.params.context.collection().then((querySnapshot) => {
             querySnapshot.forEach(function (doc) {
                 object = doc.data();
@@ -49,7 +49,7 @@ class AddCollection extends React.Component {
     }
 
     addCollection = () => {
-        //console.log(this.props.route.params.context);
+        ////console.log(this.props.route.params.context);
         const { title, artist, year, numberTracks, listened } = this.state;
         let obj = { title, artist, year, numberTracks, listened };
         this.props.route.params.context.addCollection(obj);

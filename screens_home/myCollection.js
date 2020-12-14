@@ -35,13 +35,13 @@ class MyCollection extends React.Component {
 
     componentWillFocus() {
         this.updateMusic2();
-        console.log("focus");
+        //console.log("focus");
     }
     updateMusic2() {
         let collectionList = [];
         let object = {};
         this.setState({ loading: true });
-        console.log(this.props.route.params.context);
+        //console.log(this.props.route.params.context);
         this.props.route.params.context.collection().then((querySnapshot) => {
             querySnapshot.forEach(function (doc) {
                 object = doc.data();
@@ -58,7 +58,7 @@ class MyCollection extends React.Component {
         let collectionList = [];
         let object = {};
         this.setState({ loading: true });
-        console.log(this.props.route.params.context.collection());
+        //console.log(this.props.route.params.context.collection());
         this.props.route.params.context.collection().then((querySnapshot) => {
             querySnapshot.forEach(function (doc) {
                 object = doc.data();
@@ -75,7 +75,7 @@ class MyCollection extends React.Component {
         let collectionList = [];
         let object = {};
         this.setState({ loading: true });
-        console.log(this.props.route.params.context.collection());
+        //console.log(this.props.route.params.context.collection());
         this.props.route.params.context.collection().then((querySnapshot) => {
             querySnapshot.forEach(function (doc) {
                 object = doc.data();

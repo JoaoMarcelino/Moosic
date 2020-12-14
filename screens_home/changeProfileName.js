@@ -27,7 +27,7 @@ class ChangeProfileName extends React.Component {
             })
             .catch((error) => {
                 this.setState({ error });
-                console.log(error);
+                //console.log(error);
                 alert("Wrong password");
             });
     }

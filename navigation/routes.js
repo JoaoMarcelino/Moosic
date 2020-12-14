@@ -25,7 +25,7 @@ class Routes extends React.Component {
                 check = null;
             }
         });
-        console.log("inside", check);
+        //console.log("inside", check);
         return check;
     }
 

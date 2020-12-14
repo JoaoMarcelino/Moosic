@@ -36,13 +36,13 @@ class Login extends React.Component {
         this.props.route.params.context
             .doSignInWithEmailAndPassword(email, password)
             .then((authUser) => {
-                console.log("hey");
+                //console.log("hey");
                 this.setState({ ...initialState });
                 this.props.navigation.navigate("AppBottomTab");
             })
             .catch((error) => {
                 this.setState({ error });
-                console.log(error);
+                //console.log(error);
                 alert("Check email or password");
             });
 

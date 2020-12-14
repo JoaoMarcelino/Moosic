@@ -69,7 +69,7 @@ export class AppProvider extends React.Component {
 
     removeAlbum = (itemObj) => {
         const uid = this.auth.currentUser.uid;
-        console.log(itemObj);
+        //console.log(itemObj);
         this.db
             .collection("User")
             .doc(uid)
@@ -77,7 +77,7 @@ export class AppProvider extends React.Component {
             .doc(itemObj.id)
             .delete()
             .then(function () {
-                console.log("Document successfully deleted!");
+                //console.log("Document successfully deleted!");
                 //window.location.reload(false);
             })
             .catch(function (error) {
@@ -126,7 +126,7 @@ export class AppProvider extends React.Component {
 
     removeMusic = (itemObj) => {
         const uid = this.auth.currentUser.uid;
-        console.log(itemObj);
+        //console.log(itemObj);
         this.db
             .collection("User")
             .doc(uid)
@@ -134,7 +134,7 @@ export class AppProvider extends React.Component {
             .doc(itemObj.id)
             .delete()
             .then(function () {
-                console.log("Document successfully deleted!");
+                //console.log("Document successfully deleted!");
                 //window.location.reload(false);
             })
             .catch(function (error) {
@@ -159,7 +159,7 @@ export class AppProvider extends React.Component {
 
     removeArtist = (itemObj) => {
         const uid = this.auth.currentUser.uid;
-        console.log(itemObj);
+        //console.log(itemObj);
         this.db
             .collection("User")
             .doc(uid)
@@ -167,7 +167,7 @@ export class AppProvider extends React.Component {
             .doc(itemObj.id)
             .delete()
             .then(function () {
-                console.log("Document successfully deleted!");
+                //console.log("Document successfully deleted!");
                 //window.location.reload(false);
             })
             .catch(function (error) {
@@ -196,7 +196,7 @@ export class AppProvider extends React.Component {
 
     removeCollection = (itemObj) => {
         const uid = this.auth.currentUser.uid;
-        console.log(itemObj);
+        //console.log(itemObj);
         this.db
             .collection("User")
             .doc(uid)
@@ -204,7 +204,7 @@ export class AppProvider extends React.Component {
             .doc(itemObj.id)
             .delete()
             .then(function () {
-                console.log("Document successfully deleted!");
+                //console.log("Document successfully deleted!");
                 //window.location.reload(false);
             })
             .catch(function (error) {

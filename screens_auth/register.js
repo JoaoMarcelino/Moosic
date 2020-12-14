@@ -27,7 +27,7 @@ class Register extends React.Component {
         super(props);
         this.state = { ...initialState };
         this.context = this.props.route.params.context;
-        console.log("register", this.context);
+        //console.log("register", this.context);
     }
 
     onSubmit = (event) => {
