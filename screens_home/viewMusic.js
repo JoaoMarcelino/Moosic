@@ -35,7 +35,7 @@ class ViewMusic extends React.Component {
 						backgroundColor="#0D0D0D"
 						title={item.title}
 						screenProps={this.props}
-						secondIcon={"times"}
+						secondIcon={"trash"}
 						secondOnPress={() => {
 							this.delM(item);
 							this.props.navigation.goBack();
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontFamily: "Inter Regular",
 		fontSize: 16,
-		lineHeight: 19,
+		lineHeight: 20,
 		color: "#0D0D0D",
 	},
 

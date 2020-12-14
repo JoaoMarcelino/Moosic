@@ -114,14 +114,17 @@ class MyAlbums extends React.Component {
 								<PersonalItem
 									upperText={item.title}
 									bottomText={item.artist}
-									onPress={() =>
+									onPress={() => {
+										const delA = this.updateMusic;
+
 										this.props.navigation.navigate(
 											"ViewAlbum",
 											{
 												item,
+												delA,
 											}
-										)
-									}
+										);
+									}}
 								/>
 							)}
 						/>
