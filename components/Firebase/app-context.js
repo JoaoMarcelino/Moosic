@@ -32,6 +32,26 @@ export class AppProvider extends React.Component {
 
     // *** User API ***
 
+    addUsername = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("UserInfo")
+            .add(itemObj)
+            .catch((err) => alert(err));
+    };
+
+    setUsername = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("UserInfo")
+            .doc(itemObj.id)
+            .set(itemObj);
+    };
+
     albums = () => {
         const uid = this.auth.currentUser.uid;
         return this.db.collection("User").doc(uid).collection("Album").get();
@@ -192,6 +212,18 @@ export class AppProvider extends React.Component {
             });
     };
 
+    setListenedCollection = (itemObj) => {
+        const uid = this.auth.currentUser.uid;
+        this.db
+            .collection("User")
+            .doc(uid)
+            .collection("Collection")
+            .doc(itemObj.id)
+            .set(itemObj);
+
+        return itemObj;
+    };
+
     render() {
         return (
             <AppContext.Provider
@@ -203,6 +235,9 @@ export class AppProvider extends React.Component {
                     doSignInWithEmailAndPassword: this
                         .doSignInWithEmailAndPassword,
                     doSignOut: this.doSignOut,
+
+                    addUsername: this.addUsername,
+                    setUsername: this.setUsername,
 
                     musics: this.musics,
                     addMusic: this.addMusic,
@@ -221,6 +256,7 @@ export class AppProvider extends React.Component {
                     collection: this.collection,
                     addCollection: this.addCollection,
                     removeCollection: this.removeCollection,
+                    setListenedCollection: this.setListenedCollection,
                 }}
             >
                 {this.props.children}
