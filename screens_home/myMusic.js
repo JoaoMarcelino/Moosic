@@ -86,19 +86,9 @@ class MyMusic extends React.Component {
 		});
 	}
 
-	/*
-		ADICIONAR DENTRO DA FLAT LIST
-		addOnPress={() =>
-							this.props.navigation.navigate("ViewMusic", {
-								item,
-							})
-						}
-						/
-					/>
-*/
-
 	render() {
 		const { musicList } = this.state;
+
 		return (
 			<SafeAreaView style={styles.safeView}>
 				<StatusBar backgroundColor="black" barStyle="light-content" />
@@ -110,7 +100,8 @@ class MyMusic extends React.Component {
 						backgroundColor="#0D0D0D"
 						title="My Music"
 						screenProps={this.props}
-						addOnPress={() =>
+						secondIcon="plus"
+						secondOnPress={() =>
 							this.props.navigation.navigate("AddMusic", {
 								musicList,
 							})
@@ -123,14 +114,16 @@ class MyMusic extends React.Component {
 								<PersonalItem
 									upperText={item.title}
 									bottomText={item.artist}
-									onPress={() =>
+									onPress={() => {
+										const delM = this.updateMusic;
 										this.props.navigation.navigate(
 											"ViewMusic",
 											{
 												item,
+												delM,
 											}
-										)
-									}
+										);
+									}}
 								/>
 							)}
 						/>

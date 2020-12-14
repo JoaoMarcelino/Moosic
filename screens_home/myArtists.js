@@ -98,7 +98,8 @@ class MyArtists extends React.Component {
 						backgroundColor="#0D0D0D"
 						title="My Artists"
 						screenProps={this.props}
-						addOnPress={() =>
+						secondIcon="plus"
+						secondOnPress={() =>
 							this.props.navigation.navigate("AddArtist", {
 								artistList,
 							})

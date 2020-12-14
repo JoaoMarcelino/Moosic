@@ -55,7 +55,8 @@ class ChangeProfileName extends React.Component {
 						backgroundColor="#0D0D0D"
 						title="Change Profile Name"
 						screenProps={this.props}
-						addOnPress={null}
+						secondIcon={null}
+						secondOnPress={null}
 					/>
 					<View style={styles.container}>
 						<TextInput

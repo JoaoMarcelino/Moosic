@@ -60,7 +60,8 @@ class ChangePassword extends React.Component {
 						backgroundColor="#0D0D0D"
 						title="Change Password"
 						screenProps={this.props}
-						addOnPress={null}
+						secondIcon={null}
+						secondOnPress={null}
 					/>
 					<View style={styles.container}>
 						<TextInput
