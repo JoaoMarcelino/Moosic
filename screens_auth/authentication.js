@@ -2,6 +2,8 @@ import React from "react";
 import { Platform } from "react-native";
 import FormButton from "../components/FormButton";
 import SocialButton from "../components/SocialButton";
+import SpotifyButton from "../components/SpotifyButton";
+import * as WebBrowser from "expo-web-browser";
 
 import {
 	Image,
@@ -14,6 +16,8 @@ import {
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
+
+WebBrowser.maybeCompleteAuthSession();
 
 class Authentication extends React.Component {
 	constructor(props) {
@@ -69,15 +73,7 @@ class Authentication extends React.Component {
 									buttonTitle="Register"
 								/>
 							</View>
-							<SocialButton
-								onPress={() => {
-									this.onSignInButtonClick();
-								}}
-								buttonTitle="Login with Spotify"
-								btnType="spotify"
-								color="#000"
-								backgroundColor="#f2f2f2"
-							/>
+							<SpotifyButton />
 						</View>
 					</View>
 				</ImageBackground>

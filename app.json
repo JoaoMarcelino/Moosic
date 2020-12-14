@@ -1,5 +1,6 @@
 {
 	"expo": {
+		"scheme": "moosic",
 		"name": "Moosic",
 		"slug": "Moosic",
 		"version": "1.0.0",
