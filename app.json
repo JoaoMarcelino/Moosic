@@ -1,43 +1,43 @@
 {
-  "expo": {
-    "scheme": "moosic",
-    "name": "Moosic",
-    "slug": "Moosic",
-    "version": "0.0.1",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": false,
-      "userInterfaceStyle": "light",
-      "infoPlist": {
-        "UIUserInterfaceStyle": "Light"
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "softwareKeyboardLayoutMode": "pan",
-      "userInterfaceStyle": "light",
-      "package": "com.goncalosaomarcos.Moosic"
-    },
-    "androidNavigationBar": {
-      "barStyle": "light-content",
-      "backgroundColor": "#000000"
-    },
-    "description": ""
-  }
+    "expo": {
+        "scheme": "moosic",
+        "name": "Moosic",
+        "slug": "Moosic",
+        "version": "0.0.2",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "userInterfaceStyle": "light",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#000000"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": ["**/*"],
+        "ios": {
+            "supportsTablet": false,
+            "userInterfaceStyle": "light",
+            "infoPlist": {
+                "UIUserInterfaceStyle": "Light"
+            }
+        },
+        "android": {
+            "permissions": [],
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#FFFFFF"
+            },
+            "softwareKeyboardLayoutMode": "pan",
+            "userInterfaceStyle": "light",
+            "package": "com.goncalosaomarcos.Moosic",
+            "versionCode": 2
+        },
+        "androidNavigationBar": {
+            "barStyle": "light-content",
+            "backgroundColor": "#000000"
+        },
+        "description": ""
+    }
 }
