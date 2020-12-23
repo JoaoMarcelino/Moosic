@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import FormButton from "../components/FormButton";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { Keyboard } from "react-native";
 
 import {
     ImageBackground,
@@ -39,6 +40,7 @@ class Login extends React.Component {
                 //console.log("hey");
                 this.setState({ ...initialState });
                 this.props.navigation.navigate("AppBottomTab");
+                Keyboard.dismiss();
             })
             .catch((error) => {
                 this.setState({ error });

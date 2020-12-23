@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import FormButton from "../components/FormButton";
 import React from "react";
+import { Keyboard } from "react-native";
 
 import {
     ImageBackground,
@@ -38,11 +39,12 @@ class Register extends React.Component {
             .then((authUser) => {
                 this.setState({ ...initialState });
                 //this.props.route.params.context.addUsername({ username });
-                this.props.navigation.navigate("Authentication");
+                this.props.navigation.navigate("Login");
+                Keyboard.dismiss();
             })
             .catch((error) => {
                 this.setState({ error });
-                alert(error);
+                //alert(error);
                 alert("Check if fields are correctly formatted.");
             });
 

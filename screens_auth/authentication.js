@@ -16,6 +16,7 @@ import {
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -74,6 +75,13 @@ class Authentication extends React.Component {
                                 />
                             </View>
                         </View>
+                        <TouchableOpacity
+                            onPress={() => {
+                                this.props.navigation.navigate("ContactUs");
+                            }}
+                        >
+                            <Text style={styles.contactUs}>Contact Us</Text>
+                        </TouchableOpacity>
                     </View>
                 </ImageBackground>
             </SafeAreaView>
@@ -104,7 +112,7 @@ const styles = StyleSheet.create({
 
     formButtons: {
         flexWrap: "wrap",
-        flexDirection: "row",
+        flexDirection: "column",
         justifyContent: "space-evenly",
     },
 
@@ -134,6 +142,15 @@ const styles = StyleSheet.create({
         fontSize: 36,
         lineHeight: 40,
         color: "#f2f2f2",
+    },
+    contactUs: {
+        fontFamily: "Courier Prime Bold",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: 20,
+        lineHeight: 40,
+        color: "#f2f2f2",
+        textDecorationLine: "underline",
     },
 
     safeView: {
