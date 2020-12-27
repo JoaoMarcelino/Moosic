@@ -3,7 +3,7 @@
         "scheme": "moosic",
         "name": "Moosic",
         "slug": "Moosic",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
         "userInterfaceStyle": "light",
@@ -32,7 +32,7 @@
             "softwareKeyboardLayoutMode": "pan",
             "userInterfaceStyle": "light",
             "package": "com.goncalosaomarcos.Moosic",
-            "versionCode": 2
+            "versionCode": 3
         },
         "androidNavigationBar": {
             "barStyle": "light-content",
