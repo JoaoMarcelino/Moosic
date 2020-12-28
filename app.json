@@ -3,7 +3,7 @@
         "scheme": "moosic",
         "name": "Moosic",
         "slug": "Moosic",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
         "userInterfaceStyle": "light",
@@ -25,14 +25,10 @@
         },
         "android": {
             "permissions": [],
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
-                "backgroundColor": "#FFFFFF"
-            },
             "softwareKeyboardLayoutMode": "pan",
             "userInterfaceStyle": "light",
             "package": "com.goncalosaomarcos.Moosic",
-            "versionCode": 3
+            "versionCode": 4
         },
         "androidNavigationBar": {
             "barStyle": "light-content",
