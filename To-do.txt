@@ -1,1 +1,6 @@
 Sort nas musicas
+Tablet support
+Add podcast support
+Spotify
+Other platforms
+Concertos perto do user
